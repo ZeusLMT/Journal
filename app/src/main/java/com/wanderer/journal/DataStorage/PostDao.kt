@@ -3,6 +3,7 @@ package com.wanderer.journal.DataStorage
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 
+@Dao
 interface PostDao{
     @Query("SELECT * FROM post")
     fun getAll(): LiveData<List<Post>>
