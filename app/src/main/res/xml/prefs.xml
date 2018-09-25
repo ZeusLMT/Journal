@@ -6,6 +6,6 @@
         android:dialogTitle="Select background color"
         android:entries="@array/ViewMode_names"
         android:entryValues="@array/ViewMode_values"
-        android:defaultValue="false"
+        android:defaultValue="GRID"
         />
 </PreferenceScreen>

@@ -6,7 +6,7 @@ import android.arch.persistence.room.*
 @Dao
 interface PostDao{
     @Query("SELECT * FROM post")
-    fun getAll(): List<Post>
+    fun getAll(): LiveData<List<Post>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(post: Post): Long

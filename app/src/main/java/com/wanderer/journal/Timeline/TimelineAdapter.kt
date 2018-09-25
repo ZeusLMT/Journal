@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.preference.PreferenceManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,13 +22,14 @@ class TimelineAdapter(private val dataset: List<Post>, private val appContext: C
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val sp = PreferenceManager.getDefaultSharedPreferences(appContext)
         var viewHolder: RecyclerView.ViewHolder? = null
-        when (sp.getBoolean(appContext.getString(R.string.prefs_key_view_mode), false)) {
-            true -> {
+        Log.d("abc", sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID"))
+        when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
+            "LIST" -> {
 //                val itemView = LayoutInflater.from(parent.context)
 //                        .inflate(R.layout.timeline_list_item, parent, false)
 //                viewHolder = ListViewHolder(itemView)
             }
-            false -> {
+            "GRID" -> {
                 val itemView = LayoutInflater.from(parent.context)
                         .inflate(R.layout.timeline_grid_item, parent, false)
                 viewHolder = GridViewHolder(itemView)
@@ -43,10 +45,10 @@ class TimelineAdapter(private val dataset: List<Post>, private val appContext: C
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisPost = dataset[position]
         val sp = PreferenceManager.getDefaultSharedPreferences(appContext)
-        when (sp.getBoolean(appContext.getString(R.string.prefs_key_view_mode), false)) {
-            true -> {
+        when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
+            "LIST" -> {
             }
-            false -> {
+            "GRID" -> {
                 val imageBitmap = BitmapFactory.decodeFile(thisPost.image)
                 (holder as GridViewHolder).imageView.setImageBitmap(imageBitmap)
                 holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location)
