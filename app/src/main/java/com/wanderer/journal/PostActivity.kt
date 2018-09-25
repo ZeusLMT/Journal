@@ -22,11 +22,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class PostActivity : AppCompatActivity() {
-    val REQUEST_IMAGE_CAPTURE = 1
-    var curPicPath: String = ""
-    var time: String = ""
-    var desc: String = ""
-    var location: String = "abc"
+    companion object {
+        private const val REQUEST_IMAGE_CAPTURE = 1
+    }
+
+    private var curPicPath: String = ""
+    private var time: String = ""
+    private var desc: String = ""
+    private var location: String = "abc"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +81,7 @@ class PostActivity : AppCompatActivity() {
 
     private fun dispatchTakePictureIntent() {
         val myIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        var imgFile: File = createImageFile()
+        val imgFile: File = createImageFile()
         val imgURI: Uri = FileProvider.getUriForFile(this, "com.example.fileprovider", imgFile)
 
         if (myIntent.resolveActivity(packageManager) != null) {
