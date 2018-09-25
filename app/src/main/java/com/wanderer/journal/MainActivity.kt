@@ -10,10 +10,14 @@ import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
 
 class MainActivity : AppCompatActivity() {
+    private val timelineFragment = TimelineFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Open timeline fragment
+        supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, timelineFragment).commit()
 
         val postDB = PostDB.get(this)
         doAsync {
