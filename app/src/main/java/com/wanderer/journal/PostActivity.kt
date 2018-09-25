@@ -49,12 +49,11 @@ class PostActivity : AppCompatActivity() {
         val postDB = PostDB.get(this)
 
         post_img.setOnClickListener {
-//            if(!curPicPath.isBlank()){
-//                val delFile = File(curPicPath)
-//                delFile.delete()
-//                Log.d("DelFile", "somethingwrong")
-//            }
-            dispatchTakePictureIntent()
+            if(isExternalStorageWritable()){
+                dispatchTakePictureIntent()
+            } else{
+                Toast.makeText(this, "Storage space not available", Toast.LENGTH_SHORT).show()
+            }
         }
 
         cancel_button.setOnClickListener {
@@ -120,5 +119,9 @@ class PostActivity : AppCompatActivity() {
             curPicPath = absolutePath
             Log.d("PicStoragePath", curPicPath)
         }
+    }
+
+    fun isExternalStorageWritable(): Boolean {
+        return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
     }
 }
