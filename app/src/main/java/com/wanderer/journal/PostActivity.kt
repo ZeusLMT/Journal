@@ -1,12 +1,17 @@
 package com.wanderer.journal
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -35,9 +40,20 @@ class PostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
+        if(Build.VERSION.SDK_INT >= 23 &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
+        }
+
         val postDB = PostDB.get(this)
 
         post_img.setOnClickListener {
+//            if(!curPicPath.isBlank()){
+//                val delFile = File(curPicPath)
+//                delFile.delete()
+//                Log.d("DelFile", "somethingwrong")
+//            }
             dispatchTakePictureIntent()
         }
 
@@ -57,10 +73,8 @@ class PostActivity : AppCompatActivity() {
                 doAsync {
                     Log.d("Text", Post(time,curPicPath,desc,location).toString())
                     postDB.postDao().insert(Post(time, curPicPath, desc, location))
-                    UI {
-                        //Toast.makeText(applicationContext, "Save successful", Toast.LENGTH_SHORT).show()
-                        Log.d("Successful", "Wonderful")
-                        Log.d("YEET", postDB.postDao().getAll().toString())
+                    UI{
+                        finish()
                     }
                 }
             }
@@ -93,6 +107,7 @@ class PostActivity : AppCompatActivity() {
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
+        Log.d("wee", "wee")
         // Create an image file name
         //Using datetime to avoid collision
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
