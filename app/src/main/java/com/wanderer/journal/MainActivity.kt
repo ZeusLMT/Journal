@@ -1,5 +1,6 @@
 package com.wanderer.journal
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -15,16 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val postDB = PostDB.get(this)
-        doAsync {
-            val x = postDB.postDao().insert(Post("2", "myImage", "myDesc", "myLoc"))
-            val t = postDB.postDao().insert(Post("3", "myImages", "myDescs", "myLocs"))
-            val y = postDB.postDao().getSinglePost("2")
-            val z: List<Post> = postDB.postDao().getAll()
-            UI {
-                Log.d("Checking", "$x $y")
-            }
-        }
+//        val intent = Intent(this, PostActivity::class.java).apply{}
+//        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
