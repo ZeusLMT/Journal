@@ -9,12 +9,13 @@
     <ImageView
         android:id="@+id/post_img"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/post_image_desc"
         app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +28,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:hint="Description"
+        android:hint="@string/description_hint"
         android:inputType="textCapSentences"
         app:layout_constraintBottom_toTopOf="@+id/cancel_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +43,7 @@
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="false"
         android:background="@drawable/cancel"
+        android:contentDescription="@string/cancel_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -52,6 +54,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/checkmark"
+        android:contentDescription="@string/save_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

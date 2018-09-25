@@ -4,7 +4,10 @@
     <string name="action_settings">Settings</string>
     <string name="general_img_desc">Image taken at %1$s</string>
     <!--Post Activity-->
-    <string name="post_image_desc">Image View</string>
+    <string name="post_image_desc">Captured image</string>
+    <string name="cancel_desc">Cancel button</string>
+    <string name="save_desc">Save button</string>
+    <string name="description_hint">Save your thoughts here…</string>
     <!--Shared Preferences-->
     <string name="prefs_key_view_mode">prefs_ViewMode</string>
     <string-array name="ViewMode_names">

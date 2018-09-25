@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
@@ -87,7 +88,7 @@ class PostActivity : AppCompatActivity() {
             time = SimpleDateFormat("dd/MM/yyy HH:mm:ss").format(Date())
 
             //Preview image high resolution
-            val imageBitmap = BitmapFactory.decodeFile(curPicPath)
+            val imageBitmap = squareCropImg(BitmapFactory.decodeFile(curPicPath))
             post_img.setImageBitmap(imageBitmap)
             Log.d("ActivityResult", "OK")
         }
@@ -120,5 +121,17 @@ class PostActivity : AppCompatActivity() {
             curPicPath = absolutePath
             Log.d("PicStoragePath", curPicPath)
         }
+    }
+
+    private fun squareCropImg(original: Bitmap): Bitmap {
+        val width = original.width
+        val height = original.height
+        val newWidth = if (height > width) width else height
+        val newHeight = if (height > width) height - (height - width) else height
+        var cropW = (width - height) / 2
+        cropW = if (cropW < 0) 0 else cropW
+        var cropH = (height - width) / 2
+        cropH = if (cropH < 0) 0 else cropH
+        return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
     }
 }

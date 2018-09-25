@@ -1,6 +1,7 @@
 package com.wanderer.journal.Timeline
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.preference.PreferenceManager
 import android.support.v7.widget.RecyclerView
@@ -49,7 +50,7 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisPost = dataset[position]
         val sp = PreferenceManager.getDefaultSharedPreferences(appContext)
-        val imageBitmap = BitmapFactory.decodeFile(thisPost.image)
+        val imageBitmap = squareCropImg(BitmapFactory.decodeFile(thisPost.image))
 
         when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
             "LIST" -> {
@@ -81,5 +82,17 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
 
     private fun comparePost(thisPost: Post, otherPost: Post): Boolean {
         return thisPost.time.substringBefore(" ") == otherPost.time.substringBefore(" ")
+    }
+
+    private fun squareCropImg(original: Bitmap): Bitmap {
+        val width = original.width
+        val height = original.height
+        val newWidth = if (height > width) width else height
+        val newHeight = if (height > width) height - (height - width) else height
+        var cropW = (width - height) / 2
+        cropW = if (cropW < 0) 0 else cropW
+        var cropH = (height - width) / 2
+        cropH = if (cropH < 0) 0 else cropH
+        return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
     }
 }
