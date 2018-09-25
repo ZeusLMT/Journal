@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Timeline">
+    tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/FrameLayout_mainscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

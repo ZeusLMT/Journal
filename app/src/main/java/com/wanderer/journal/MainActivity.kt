@@ -9,11 +9,11 @@ import com.wanderer.journal.DataStorage.PostDB
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
 
-class Timeline : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_timeline)
+        setContentView(R.layout.activity_main)
 
         val postDB = PostDB.get(this)
         doAsync {
