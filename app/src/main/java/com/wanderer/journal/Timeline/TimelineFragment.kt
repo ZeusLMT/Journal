@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostModel
 import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.fragment_timeline.*
@@ -26,12 +28,17 @@ class TimelineFragment: Fragment() {
         val postModelProvider = ViewModelProviders.of(activity!!).get(PostModel::class.java)
 
         postModelProvider.getAllPosts().observe(this, Observer {
-            recyclerView_timeline.adapter = TimelineAdapter(it!!.sorted(), context!!)
+            recyclerView_timeline.adapter = TimelineAdapter(it!!.sorted(), context!!) {item: Post -> onItemClick(item)}
             if (viewMode == "LIST") {
                 recyclerView_timeline.layoutManager = LinearLayoutManager(context)
             } else {
-                recyclerView_timeline.layoutManager = GridLayoutManager(context, 3)
+                recyclerView_timeline.layoutManager = GridLayoutManager(context, 2)
             }
         })
+    }
+
+    private fun onItemClick(item: Post) {
+        Toast.makeText(context, "${item.description}", Toast.LENGTH_SHORT).show()
+        //SHOW SINGLE POST HERE
     }
 }
