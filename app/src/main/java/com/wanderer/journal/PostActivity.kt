@@ -1,16 +1,14 @@
 package com.wanderer.journal
 
 import android.app.Activity
-import android.app.Application
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
 import com.wanderer.journal.DataStorage.Post
@@ -38,6 +36,10 @@ class PostActivity : AppCompatActivity() {
 
         post_img.setOnClickListener {
             dispatchTakePictureIntent()
+        }
+
+        cancel_button.setOnClickListener {
+            finish()
         }
 
         save_button.setOnClickListener {
