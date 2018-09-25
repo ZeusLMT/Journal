@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
             val z: List<Post> = postDB.postDao().getAll()
             UI {
                 Log.d("Checking", "$x $y")
-                for(item in z){
-                    Log.d("Checking2", "$item")
-                }
-                //Log.d("Checking2", "$z")
             }
         }
     }
