@@ -17,6 +17,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostDB
@@ -28,7 +29,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PostActivity : AppCompatActivity() {
+class PostActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         private const val REQUEST_IMAGE_CAPTURE = 1
     }
@@ -37,6 +38,7 @@ class PostActivity : AppCompatActivity() {
     private var time: String = ""
     private var desc: String = ""
     private var location: String = "abc"
+    private val postDB = PostDB.get(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         changeTheme()
@@ -49,38 +51,9 @@ class PostActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
 
-        val postDB = PostDB.get(this)
-
-        post_img.setOnClickListener {
-            if(isExternalStorageWritable()){
-                dispatchTakePictureIntent()
-            } else{
-                Toast.makeText(this, "Storage space not available", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        cancel_button.setOnClickListener {
-            finish()
-        }
-
-        save_button.setOnClickListener {
-            desc = description.text.toString()
-            if (curPicPath.isBlank() || time.isBlank()) {
-                Toast.makeText(this, "Image empty. Cannot save", Toast.LENGTH_SHORT).show()
-            } else if (location.isBlank()) {
-                Toast.makeText(this, "Cannot find location. Please check GPS", Toast.LENGTH_SHORT).show()
-            } else if (desc.isBlank()) {
-                Toast.makeText(this, "Description empty. Please fill", Toast.LENGTH_SHORT).show()
-            } else {
-                doAsync {
-                    Log.d("Text", Post(time,curPicPath,desc,location).toString())
-                    postDB.postDao().insert(Post(time, curPicPath, desc, location))
-                    UI{
-                        finish()
-                    }
-                }
-            }
-        }
+        post_img.setOnClickListener(this)
+        cancel_button.setOnClickListener(this)
+        save_button.setOnClickListener(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -124,7 +97,7 @@ class PostActivity : AppCompatActivity() {
         }
     }
 
-    fun isExternalStorageWritable(): Boolean {
+    private fun isExternalStorageWritable(): Boolean {
         return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
     }
 
@@ -146,6 +119,39 @@ class PostActivity : AppCompatActivity() {
         when (sp.getString(getString(R.string.prefs_key_app_theme), "LIGHT")) {
             "LIGHT" -> setTheme(R.style.AppTheme_PastelLight)
             "DARK" -> setTheme(R.style.AppTheme_PastelDark)
+        }
+    }
+
+    override fun onClick(p0: View?){
+        when(p0?.id){
+            R.id.post_img -> {
+                if(isExternalStorageWritable()){
+                    dispatchTakePictureIntent()
+                } else{
+                    Toast.makeText(this, "Storage space not available", Toast.LENGTH_SHORT).show()
+                }
+            }
+            R.id.cancel_button -> {
+                finish()
+            }
+            R.id.save_button -> {
+                desc = description.text.toString()
+                if (curPicPath.isBlank() || time.isBlank()) {
+                    Toast.makeText(this, "Image empty. Cannot save", Toast.LENGTH_SHORT).show()
+                } else if (location.isBlank()) {
+                    Toast.makeText(this, "Cannot find location. Please check GPS", Toast.LENGTH_SHORT).show()
+                } else if (desc.isBlank()) {
+                    Toast.makeText(this, "Description empty. Please fill", Toast.LENGTH_SHORT).show()
+                } else {
+                    doAsync {
+                        Log.d("Text", Post(time,curPicPath,desc,location).toString())
+                        postDB.postDao().insert(Post(time, curPicPath, desc, location))
+                        UI{
+                            finish()
+                        }
+                    }
+                }
+            }
         }
     }
 }
