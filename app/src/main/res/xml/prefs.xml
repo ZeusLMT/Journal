@@ -8,4 +8,12 @@
         android:entryValues="@array/ViewMode_values"
         android:defaultValue="LIST"
         />
+    <ListPreference
+        android:key="@string/prefs_key_app_theme"
+        android:title="App theme"
+        android:dialogTitle="Select theme"
+        android:entries="@array/Theme_names"
+        android:entryValues="@array/Theme_values"
+        android:defaultValue="LIGHT"
+        />
 </PreferenceScreen>

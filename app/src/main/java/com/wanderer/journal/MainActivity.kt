@@ -14,8 +14,9 @@ class MainActivity : AppCompatActivity() {
     private val timelineFragment = TimelineFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //Initialize Shared Preference
+        //Initialize Shared Preference and set up theme
         PreferenceManager.setDefaultValues(this, R.xml.prefs, false)
+        changeTheme()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,5 +45,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun changeTheme() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        //Change app theme accordingly to user settings
+        when (sp.getString(getString(R.string.prefs_key_app_theme), "LIGHT")) {
+            "LIGHT" -> setTheme(R.style.AppTheme_PastelLight)
+            "DARK" -> setTheme(R.style.AppTheme_PastelDark)
+        }
     }
 }

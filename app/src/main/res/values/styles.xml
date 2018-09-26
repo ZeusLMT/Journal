@@ -13,8 +13,15 @@
         <item name="colorPrimaryDark">@color/pastelLight_PrimaryDark</item>
         <item name="colorAccent">@color/pastelLight_Accent</item>
         <item name="android:colorBackground">@color/pastelLight_Background</item>
-        <item name="android:navigationBarColor">@color/pastelLight_Primary</item>
-        <item name="android:statusBarColor">@color/pastelLight_Primary</item>
+        <item name="android:navigationBarColor">@color/pastelLight_PrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.PastelDark" parent="Theme.AppCompat" >
+        <item name="colorPrimary">@color/pastelDark_Primary</item>
+        <item name="colorPrimaryDark">@color/pastelDark_PrimaryDark</item>
+        <item name="colorAccent">@color/pastelDark_Accent</item>
+        <item name="android:navigationBarColor">@color/pastelDark_PrimaryDark</item>
+        <item name="android:colorBackground">@color/pastelDark_Background</item>
     </style>
 
 </resources>

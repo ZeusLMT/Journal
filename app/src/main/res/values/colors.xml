@@ -3,10 +3,19 @@
     <color name="colorPrimary">#1976d2</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff4081</color>
+
     <color name="translucent_textView">#aa212121</color>
-    <color name="pastelLight_Primary">#51a1c4</color>
-    <color name="pastelLight_PrimaryDark">#466675</color>
+    <color name="textView_text">#f5f5f5</color>
+
+    <color name="pastelLight_Primary">#4484ce</color>
+    <color name="pastelLight_PrimaryDark">#3c6999</color>
     <color name="pastelLight_Accent">#f48b52</color>
     <color name="pastelLight_Background">#f1f1f1</color>
     <color name="pastelLight_Text">#343435</color>
+
+    <color name="pastelDark_Primary">#192231</color>
+    <color name="pastelDark_PrimaryDark">#161d29</color>
+    <color name="pastelDark_Accent">#985e6d</color>
+    <color name="pastelDark_Background">#1d2731</color>
+    <color name="pastelDark_Text">#343435</color>
 </resources>

@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.preference.PreferenceManager
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -38,6 +39,7 @@ class PostActivity : AppCompatActivity() {
     private var location: String = "abc"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        changeTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
@@ -136,5 +138,14 @@ class PostActivity : AppCompatActivity() {
         var cropH = (height - width) / 2
         cropH = if (cropH < 0) 0 else cropH
         return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
+    }
+
+    private fun changeTheme() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        //Change app theme accordingly to user settings
+        when (sp.getString(getString(R.string.prefs_key_app_theme), "LIGHT")) {
+            "LIGHT" -> setTheme(R.style.AppTheme_PastelLight)
+            "DARK" -> setTheme(R.style.AppTheme_PastelDark)
+        }
     }
 }

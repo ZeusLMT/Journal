@@ -7,7 +7,7 @@
 
     <View
         android:id="@+id/divider_switch"
-        android:layout_width="1dp"
+        android:layout_width="2dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -24,6 +24,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:text="DD.MM.YYYY"
+        android:textColor="@color/pastelLight_Accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +37,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/general_img_desc"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -44,7 +46,7 @@
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="1dp"
+        android:layout_width="2dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
