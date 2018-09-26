@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.PastelLight" parent="Theme.AppCompat.Light.DarkActionBar" >
+        <item name="colorPrimary">@color/pastelLight_Primary</item>
+        <item name="colorPrimaryDark">@color/pastelLight_PrimaryDark</item>
+        <item name="colorAccent">@color/pastelLight_Accent</item>
+        <item name="android:colorBackground">@color/pastelLight_Background</item>
+        <item name="android:navigationBarColor">@color/pastelLight_Primary</item>
+        <item name="android:statusBarColor">@color/pastelLight_Primary</item>
+    </style>
+
 </resources>

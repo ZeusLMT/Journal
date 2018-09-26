@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
     private val timelineFragment = TimelineFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         //Initialize Shared Preference
         PreferenceManager.setDefaultValues(this, R.xml.prefs, false)
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         //Open timeline fragment
         supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, timelineFragment).commit()

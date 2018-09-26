@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff4081</color>
     <color name="translucent_textView">#aa212121</color>
+    <color name="pastelLight_Primary">#51a1c4</color>
+    <color name="pastelLight_PrimaryDark">#466675</color>
+    <color name="pastelLight_Accent">#f48b52</color>
+    <color name="pastelLight_Background">#f1f1f1</color>
+    <color name="pastelLight_Text">#343435</color>
 </resources>
