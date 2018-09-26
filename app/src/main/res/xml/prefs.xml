@@ -2,8 +2,8 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
         android:key="@string/prefs_key_view_mode"
-        android:title="Background Color"
-        android:dialogTitle="Select background color"
+        android:title="Album view mode"
+        android:dialogTitle="Select view mode"
         android:entries="@array/ViewMode_names"
         android:entryValues="@array/ViewMode_values"
         android:defaultValue="LIST"

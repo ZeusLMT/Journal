@@ -2,6 +2,7 @@ package com.wanderer.journal.Timeline
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
@@ -17,15 +18,33 @@ import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.fragment_timeline.*
 
 class TimelineFragment: Fragment() {
+    private lateinit var sp: SharedPreferences
+    private lateinit var postModelProvider: PostModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_timeline, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        sp = PreferenceManager.getDefaultSharedPreferences(context)
+        postModelProvider = ViewModelProviders.of(activity!!).get(PostModel::class.java)
+
+        setUpRecyclerView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setUpRecyclerView()
+    }
+
+    private fun onItemClick(item: Post) {
+        Toast.makeText(context, item.description, Toast.LENGTH_SHORT).show()
+        //SHOW SINGLE POST HERE
+    }
+
+    private fun setUpRecyclerView() {
         val viewMode = sp.getString(getString(R.string.prefs_key_view_mode), "GRID")
-        val postModelProvider = ViewModelProviders.of(activity!!).get(PostModel::class.java)
 
         postModelProvider.getAllPosts().observe(this, Observer {
             recyclerView_timeline.adapter = TimelineAdapter(it!!.sorted(), context!!) {item: Post -> onItemClick(item)}
@@ -35,10 +54,5 @@ class TimelineFragment: Fragment() {
                 recyclerView_timeline.layoutManager = GridLayoutManager(context, 2)
             }
         })
-    }
-
-    private fun onItemClick(item: Post) {
-        Toast.makeText(context, "${item.description}", Toast.LENGTH_SHORT).show()
-        //SHOW SINGLE POST HERE
     }
 }

@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuItem
+import com.wanderer.journal.Settings.SettingsActivity
 import com.wanderer.journal.Timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,8 +30,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.appbar_menu, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?) = when (item!!.itemId) {
+        R.id.action_settings -> {
+            val intent = Intent(this, SettingsActivity::class.java).apply{}
+            startActivity(intent)
+            true
+        }
+
+        else -> super.onOptionsItemSelected(item)
     }
 }
