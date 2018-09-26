@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.location.Location
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -21,6 +22,7 @@ import android.view.View
 import android.widget.Toast
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostDB
+import com.wanderer.journal.Location.LocationUpdate
 import kotlinx.android.synthetic.main.activity_post.*
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
@@ -39,6 +41,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
     private var desc: String = ""
     private var location: String = "abc"
     private val postDB = PostDB.get(this)
+    private val loc = LocationUpdate()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         changeTheme()
@@ -50,6 +53,8 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
                 PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
+
+        loc.onUpdateLocation(this, this)
 
         post_img.setOnClickListener(this)
         cancel_button.setOnClickListener(this)
