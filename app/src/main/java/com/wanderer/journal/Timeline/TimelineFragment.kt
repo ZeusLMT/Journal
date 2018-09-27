@@ -1,11 +1,9 @@
 package com.wanderer.journal.Timeline
 
-import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
@@ -64,14 +62,5 @@ class TimelineFragment: Fragment() {
     override fun onAttach(context: Context){
         super.onAttach(context)
         activityCallBack =context as TimelineFragListener
-    }
-
-    @Suppress("deprecation")
-    override fun onAttach(activity: Activity?) {
-        super.onAttach(activity)
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
-            Log.d("activity test", "attached")
-            activityCallBack = activity as TimelineFragListener
-        }
     }
 }

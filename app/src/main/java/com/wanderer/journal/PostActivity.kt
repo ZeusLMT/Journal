@@ -6,9 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.location.Location
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.preference.PreferenceManager
@@ -41,7 +39,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
     private var desc: String = ""
     private var location: String = "abc"
     private val postDB = PostDB.get(this)
-    //private val loc = LocationUpdate()
+    private val loc = LocationUpdate()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         changeTheme()
@@ -50,13 +48,11 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
         val intent = Intent(this, SinglePostActivity::class.java).apply{}
         startActivity(intent)
 
-        if(Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
-                PackageManager.PERMISSION_GRANTED){
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
 
-        //loc.onUpdateLocation(this, this)
+        loc.onUpdateLocation(this, this)
 
         post_img.setOnClickListener(this)
         cancel_button.setOnClickListener(this)
