@@ -46,7 +46,7 @@ class SinglePostFragment: Fragment() {
             description.text = result.description
             time_stamp.text = result.time
 
-            val locationDisplay = "${result.neighbourhood}, ${result.city}, ${result.country}"
+            val locationDisplay = result.location.toString()
             location_stamp.text = locationDisplay
 
         }

@@ -15,8 +15,8 @@ import retrofit2.Response
 
 class LocationUpdate {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private var latLocation: Double = 0.0
-    private var lonLocation: Double = 0.0
+    var latLocation: Double = 0.0
+    var lonLocation: Double = 0.0
     var trueLocationCity = ""
     var trueLocationCountry = ""
     var trueLocationNeighbourhood = ""
@@ -49,10 +49,10 @@ class LocationUpdate {
         val value = object : Callback<OpenStreetMapApi.Model.Result>{
             override fun onResponse(call: Call<OpenStreetMapApi.Model.Result>?, response: Response<OpenStreetMapApi.Model.Result>?) {
                 if(response!= null){
-                    var res: OpenStreetMapApi.Model.Result = response.body()!!
-                    trueLocationCity = res.address.city
-                    trueLocationCountry = res.address.country
-                    trueLocationNeighbourhood =res.address.neighbourhood
+                    val address= response.body()!!.address
+                    trueLocationCity = address.city
+                    trueLocationCountry = address.country
+                    trueLocationNeighbourhood =address.neighbourhood
                 } else Log.d("LocationReverseGeocode", "null")
             }
 

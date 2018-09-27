@@ -5,9 +5,10 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
-@Database(entities = [(Post::class)], version = 1)
+@Database(entities = [(Post::class), (Location::class)], version = 1)
 abstract class PostDB : RoomDatabase() {
     abstract fun postDao(): PostDao
+    abstract fun locationDao(): LocationDao
 
     companion object {
         private var sInstance: PostDB? = null

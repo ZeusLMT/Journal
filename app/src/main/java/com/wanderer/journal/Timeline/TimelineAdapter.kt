@@ -55,7 +55,7 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
         when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
             "LIST" -> {
                 (holder as ListViewHolder).imageView.setImageBitmap(imageBitmap)
-                holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.city)
+                holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
                 holder.timestampTextView.text = thisPost.time.substringBefore(" ")
 
                 if (position == 0) {
@@ -76,8 +76,8 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
             }
             "GRID" -> {
                 (holder as GridViewHolder).imageView.setImageBitmap(imageBitmap)
-                holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.city)
-                holder.locationTextView.text = thisPost.city
+                holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
+                holder.locationTextView.text = thisPost.location.city
                 holder.itemView.setOnClickListener {clickListener(thisPost)}
             }
         }
