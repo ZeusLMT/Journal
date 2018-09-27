@@ -13,8 +13,10 @@ import com.google.android.gms.location.LocationServices
 
 class LocationUpdate {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-
+    var locc = ""
     fun onUpdateLocation(context: Context, activity: Activity){
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
+        Log.d("WWWW", locc)
         if((Build.VERSION.SDK_INT >= 23 &&
                         ContextCompat.checkSelfPermission(context,
                                 android.Manifest.permission.ACCESS_FINE_LOCATION)!=
@@ -23,11 +25,10 @@ class LocationUpdate {
                     arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION), 0)
         }
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
-
         fusedLocationProviderClient.lastLocation.addOnSuccessListener { location: Location? ->
             if(location != null){
                 Log.d("GEOLOCATION", "latitude: ${location.latitude}, longtitude: ${location.longitude}")
+                locc = location.latitude.toString()
             }
             else Log.d("GEOLOCATION", "NULL")
         }

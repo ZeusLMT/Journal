@@ -5,11 +5,11 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-    <uses-feature android:name="android.hardware.location.gps"/>
-    <uses-feature android:name="android.hardware.location.network"/>
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-feature android:name="android.hardware.location.network" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,12 +20,14 @@
         android:theme="@style/AppTheme.PastelDark">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PostActivity" android:label="@string/post_title"/>
+        <activity
+            android:name=".PostActivity"
+            android:label="@string/post_title" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -40,6 +42,7 @@
         <activity
             android:name=".Settings.SettingsActivity"
             android:label="@string/settings_title" />
+        <activity android:name=".SinglePostActivity"></activity>
     </application>
 
 </manifest>

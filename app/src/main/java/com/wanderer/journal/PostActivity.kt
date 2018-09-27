@@ -54,7 +54,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
 
-        loc.onUpdateLocation(this, this)
+        //loc.onUpdateLocation(this, this)
 
         post_img.setOnClickListener(this)
         cancel_button.setOnClickListener(this)
