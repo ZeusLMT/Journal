@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.Settings.SettingsActivity
+import com.wanderer.journal.SinglePost.SinglePostFragment
 import com.wanderer.journal.Timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
         const val REQUEST_SETTINGS = 1
     }
     private val timelineFragment = TimelineFragment()
+    private val singlePostFrag = SinglePostFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Initialize Shared Preference and set up theme
@@ -70,10 +72,10 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
     }
 
     override fun onItemClick(item: Post) {
-        //Pass data and initiate SinglePostActivity
-        val intent = Intent(this, SinglePostActivity::class.java).apply {
-            putExtra("timeStamp", item.time)
-        }
-        startActivity(intent)
+        //Pass to SinglePostFragment
+        val bundle = Bundle()
+        bundle.putString("timeStamp", item.time)
+        singlePostFrag.arguments = bundle
+        supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, singlePostFrag).addToBackStack(null).commit()
     }
 }

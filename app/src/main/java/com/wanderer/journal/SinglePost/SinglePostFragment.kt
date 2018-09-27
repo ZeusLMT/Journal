@@ -21,7 +21,7 @@ class SinglePostFragment: Fragment() {
     private lateinit var myPost: Post
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        //Get time stamp from SinglePostActivity
+        //Get time stamp from MainActivity
         val bundle = arguments
         timeStamp = bundle!!.getString("timeStamp")
         return inflater.inflate(R.layout.fragment_single_post, container, false)

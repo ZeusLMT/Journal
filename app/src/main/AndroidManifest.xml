@@ -42,7 +42,6 @@
         <activity
             android:name=".Settings.SettingsActivity"
             android:label="@string/settings_title" />
-        <activity android:name=".SinglePostActivity"></activity>
     </application>
 
 </manifest>
