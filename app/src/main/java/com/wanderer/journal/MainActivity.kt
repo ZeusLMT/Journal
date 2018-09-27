@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.wanderer.journal.Settings.SettingsActivity
@@ -11,6 +12,9 @@ import com.wanderer.journal.Timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val REQUEST_SETTINGS = 1
+    }
     private val timelineFragment = TimelineFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,16 +25,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Open timeline fragment
-        supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, timelineFragment).commit()
-
+        //Open timeline fragment if not already there
+        if (savedInstanceState == null) supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, timelineFragment).commit()
+        Log.d("abc", "Main onCreate")
         fab_add.setOnClickListener {
             val intent = Intent(this, PostActivity::class.java).apply{}
             startActivity(intent)
         }
 
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.appbar_menu, menu)
@@ -40,11 +43,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?) = when (item!!.itemId) {
         R.id.action_settings -> {
             val intent = Intent(this, SettingsActivity::class.java).apply{}
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_SETTINGS)
             true
         }
 
         else -> super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_SETTINGS -> {
+                recreate()
+            }
+        }
     }
 
     private fun changeTheme() {

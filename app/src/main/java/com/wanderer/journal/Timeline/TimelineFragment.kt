@@ -8,6 +8,7 @@ import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,19 +23,14 @@ class TimelineFragment: Fragment() {
     private lateinit var postModelProvider: PostModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_timeline, container, false)
+        return inflater.inflate(R.layout.fragment_timeline, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         sp = PreferenceManager.getDefaultSharedPreferences(context)
         postModelProvider = ViewModelProviders.of(activity!!).get(PostModel::class.java)
-
-        setUpRecyclerView()
-    }
-
-    override fun onResume() {
-        super.onResume()
+        Log.d("abc", "Timeline onCreate")
         setUpRecyclerView()
     }
 

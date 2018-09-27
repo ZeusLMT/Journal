@@ -22,12 +22,12 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
     class ListViewHolder (private val itemView: View,
                           val timestampTextView: TextView = itemView.findViewById(R.id.timestamp),
                           val imageView: ImageView = itemView.findViewById(R.id.imageView_list),
-                          val divider: View = itemView.findViewById(R.id.divider_switch)) : RecyclerView.ViewHolder(itemView)
+                          val dividerTop: View = itemView.findViewById(R.id.divider_top),
+                          val dividerBottom: View = itemView.findViewById(R.id.divider_bottom)) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val sp = PreferenceManager.getDefaultSharedPreferences(appContext)
         var viewHolder: RecyclerView.ViewHolder? = null
-        Log.d("abc", sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID"))
         when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
             "LIST" -> {
                 val itemView = LayoutInflater.from(parent.context)
@@ -57,16 +57,19 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
                 (holder as ListViewHolder).imageView.setImageBitmap(imageBitmap)
                 holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location)
                 holder.timestampTextView.text = thisPost.time.substringBefore(" ")
-                Log.d("abc", position.toString())
 
                 if (position == 0) {
-                    holder.divider.visibility = View.GONE
+                    holder.dividerTop.visibility = View.GONE
                 }
 
                 if(position >= 1 && comparePost(thisPost, dataset[position-1])) {
                     Log.d("abc", "GONE")
                     holder.timestampTextView.visibility = View.GONE
-                    holder.divider.visibility = View.GONE
+                    holder.dividerTop.visibility = View.GONE
+                }
+
+                if (position == dataset.lastIndex) {
+                    holder.dividerBottom.visibility = View.GONE
                 }
 
                 holder.itemView.setOnClickListener {clickListener(thisPost)}
