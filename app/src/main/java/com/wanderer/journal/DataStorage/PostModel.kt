@@ -9,4 +9,7 @@ class PostModel(mApplication: Application): AndroidViewModel(mApplication){
     private var allPosts: LiveData<List<Post>> = postDatabase.postDao().getAll()
 
     fun getAllPosts() = allPosts
+    fun getSinglePost(time: String): Post{
+        return postDatabase.postDao().getSinglePost(time)
+    }
 }

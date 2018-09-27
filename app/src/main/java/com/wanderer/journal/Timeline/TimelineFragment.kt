@@ -1,8 +1,11 @@
 package com.wanderer.journal.Timeline
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
@@ -21,6 +24,11 @@ import kotlinx.android.synthetic.main.fragment_timeline.*
 class TimelineFragment: Fragment() {
     private lateinit var sp: SharedPreferences
     private lateinit var postModelProvider: PostModel
+    private var activityCallBack: TimelineFragListener ?= null
+
+    interface TimelineFragListener{
+        fun onItemClick(item: Post)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_timeline, container, false)
@@ -36,7 +44,8 @@ class TimelineFragment: Fragment() {
 
     private fun onItemClick(item: Post) {
         Toast.makeText(context, item.description, Toast.LENGTH_SHORT).show()
-        //SHOW SINGLE POST HERE
+        //Pass Post to MainActivity
+        activityCallBack!!.onItemClick(item)
     }
 
     private fun setUpRecyclerView() {
@@ -50,5 +59,19 @@ class TimelineFragment: Fragment() {
                 recyclerView_timeline.layoutManager = GridLayoutManager(context, 2)
             }
         })
+    }
+
+    override fun onAttach(context: Context){
+        super.onAttach(context)
+        activityCallBack =context as TimelineFragListener
+    }
+
+    @Suppress("deprecation")
+    override fun onAttach(activity: Activity?) {
+        super.onAttach(activity)
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+            Log.d("activity test", "attached")
+            activityCallBack = activity as TimelineFragListener
+        }
     }
 }

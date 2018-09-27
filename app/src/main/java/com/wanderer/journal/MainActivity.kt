@@ -7,11 +7,12 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.Settings.SettingsActivity
 import com.wanderer.journal.Timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener {
     companion object {
         const val REQUEST_SETTINGS = 1
     }
@@ -66,5 +67,13 @@ class MainActivity : AppCompatActivity() {
             "LIGHT" -> setTheme(R.style.AppTheme_PastelLight)
             "DARK" -> setTheme(R.style.AppTheme_PastelDark)
         }
+    }
+
+    override fun onItemClick(item: Post) {
+        //Pass data and initiate SinglePostActivity
+        val intent = Intent(this, SinglePostActivity::class.java).apply {
+            putExtra("timeStamp", item.time)
+        }
+        startActivity(intent)
     }
 }
