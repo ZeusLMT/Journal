@@ -10,7 +10,8 @@ data class Post(
     val time: String,
     val image: String,
     val description: String,
-    val location: String): Comparable<Post> {
+    val lat: Double,
+    val lon: Double): Comparable<Post> {
     override fun compareTo(other: Post): Int {
         val spd = SimpleDateFormat("dd/MM/yyy HH:mm:ss")
         val thisTime = spd.parse(this.time)
@@ -19,7 +20,5 @@ data class Post(
         return otherTime.compareTo(thisTime)
     }
 
-    override fun toString(): String = "$time $image $description $location"
-
-
+    override fun toString(): String = "$time $image $description $lat $lon"
 }

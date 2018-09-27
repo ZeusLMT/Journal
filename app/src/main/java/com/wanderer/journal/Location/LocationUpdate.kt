@@ -15,8 +15,10 @@ import retrofit2.Response
 
 class LocationUpdate {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    var trueLocationCity = ""
-    private var trueLocationCountry = ""
+    var latLocation: Double = 0.0
+    var lonLocation: Double = 0.0
+    //var trueLocationCity = ""
+    //private var trueLocationCountry = ""
 
     fun onUpdateLocation(context: Context, activity: Activity){
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
@@ -30,7 +32,11 @@ class LocationUpdate {
         fusedLocationProviderClient.lastLocation.addOnSuccessListener { location: Location? ->
             if(location != null){
                 Log.d("GEOLOCATION", "latitude: ${location.latitude}, longtitude: ${location.longitude}")
-                requestLocationService(location.latitude.toString(), location.longitude.toString())
+                latLocation = location.latitude
+                lonLocation = location.longitude
+
+                //requestLocationService(location.latitude.toString(), location.longitude.toString())
+
             }
             else Log.d("GEOLOCATION", "NULL")
         }
@@ -44,8 +50,8 @@ class LocationUpdate {
                 if(response!= null){
                     var res: OpenStreetMapApi.Model.Result = response.body()!!
                     Log.d("LocationReverseGeocode", res.address.city)
-                    trueLocationCity = res.address.city
-                    trueLocationCountry = res.address.country
+                    //trueLocationCity = res.address.city
+                    //trueLocationCountry = res.address.country
                 } else Log.d("LocationReverseGeocode", "null")
             }
 
@@ -55,6 +61,6 @@ class LocationUpdate {
         }
 
         call.enqueue(value)
-        Log.d("YOOOO", "$trueLocationCity")
+        //Log.d("YOOOO", "$trueLocationCity")
     }
 }
