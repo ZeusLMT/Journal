@@ -129,12 +129,11 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             R.id.save_button -> {
                 desc = description.text.toString()
                 if (curPicPath.isBlank() || time.isBlank()) Toast.makeText(this, "Image empty. Cannot save", Toast.LENGTH_SHORT).show()
-                //else if (loc.trueLocationCity.isBlank()) Toast.makeText(this, "Cannot find location. Please check GPS", Toast.LENGTH_SHORT).show()
+                else if (loc.trueLocationCity.isBlank()) Toast.makeText(this, "Cannot find location. Please try taking picture again", Toast.LENGTH_SHORT).show()
                 else if (desc.isBlank()) Toast.makeText(this, "Description empty. Please fill", Toast.LENGTH_SHORT).show()
                 else {
                     doAsync {
-                        Log.d("Text", Post(time,curPicPath,desc,loc.latLocation, loc.lonLocation).toString())
-                        postDB.postDao().insert(Post(time, curPicPath, desc, loc.latLocation, loc.lonLocation))
+                        postDB.postDao().insert(Post(time,curPicPath,desc,loc.trueLocationNeighbourhood, loc.trueLocationCity, loc.trueLocationCountry))
                         UI{
                             finish()
                         }

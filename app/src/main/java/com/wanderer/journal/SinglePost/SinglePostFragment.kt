@@ -45,7 +45,10 @@ class SinglePostFragment: Fragment() {
             post_img.setImageBitmap(imgBitmap)
             description.text = result.description
             time_stamp.text = result.time
-            location_stamp.text = result.location
+
+            val locationDisplay = "${result.neighbourhood}, ${result.city}, ${result.country}"
+            location_stamp.text = locationDisplay
+
         }
     }
 
@@ -60,6 +63,4 @@ class SinglePostFragment: Fragment() {
         cropH = if (cropH < 0) 0 else cropH
         return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
     }
-
-
 }

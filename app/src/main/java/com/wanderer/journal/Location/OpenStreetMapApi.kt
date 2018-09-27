@@ -11,7 +11,7 @@ object OpenStreetMapApi {
 
     object Model{
         data class Result(var address: Address)
-        data class Address(var city: String, var country: String)
+        data class Address(var city: String, var country: String, var neighbourhood: String)
     }
 
     interface LocationService{

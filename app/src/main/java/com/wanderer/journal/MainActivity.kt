@@ -76,6 +76,6 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
         val bundle = Bundle()
         bundle.putString("timeStamp", item.time)
         singlePostFrag.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, singlePostFrag).addToBackStack(null).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, singlePostFrag).addToBackStack(null).commit()
     }
 }
