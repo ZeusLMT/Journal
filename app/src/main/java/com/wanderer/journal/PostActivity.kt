@@ -29,11 +29,9 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         private const val REQUEST_IMAGE_CAPTURE = 1
     }
-
     private var curPicPath: String = ""
     private var time: String = ""
     private var desc: String = ""
-    private var location: String = "abc"
     private val postDB = PostDB.get(this)
     private val loc = LocationUpdate()
 
@@ -49,7 +47,9 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            //Update location as camera activity is done
             loc.onUpdateLocation(this, this)
+
             //Set datetime for pic - unique
             time = SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date())
 
@@ -129,12 +129,12 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             R.id.save_button -> {
                 desc = description.text.toString()
                 if (curPicPath.isBlank() || time.isBlank()) Toast.makeText(this, "Image empty. Cannot save", Toast.LENGTH_SHORT).show()
-                else if (location.isBlank()) Toast.makeText(this, "Cannot find location. Please check GPS", Toast.LENGTH_SHORT).show()
+                else if (loc.trueLocationCity.isBlank()) Toast.makeText(this, "Cannot find location. Please check GPS", Toast.LENGTH_SHORT).show()
                 else if (desc.isBlank()) Toast.makeText(this, "Description empty. Please fill", Toast.LENGTH_SHORT).show()
                 else {
                     doAsync {
-                        Log.d("Text", Post(time,curPicPath,desc,location).toString())
-                        postDB.postDao().insert(Post(time, curPicPath, desc, location))
+                        Log.d("Text", Post(time,curPicPath,desc,loc.trueLocationCity).toString())
+                        postDB.postDao().insert(Post(time, curPicPath, desc, loc.trueLocationCity))
                         UI{
                             finish()
                         }
@@ -143,4 +143,5 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
 }
