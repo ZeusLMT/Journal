@@ -20,7 +20,7 @@ class LocationUpdate {
                                 android.Manifest.permission.ACCESS_FINE_LOCATION)!=
                         PackageManager.PERMISSION_GRANTED)){
             ActivityCompat.requestPermissions(activity,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 0)
+                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1)
         }
 
         fusedLocationProviderClient.lastLocation.addOnSuccessListener { location: Location? ->
