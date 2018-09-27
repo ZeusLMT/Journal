@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <View
-        android:id="@+id/divider_switch"
+        android:id="@+id/divider_top"
         android:layout_width="2dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider_switch" />
+        app:layout_constraintTop_toBottomOf="@+id/divider_top" />
 
     <ImageView
         android:id="@+id/imageView_list"
@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/gallery" />
 
     <View
-        android:id="@+id/divider2"
+        android:id="@+id/divider_bottom"
         android:layout_width="2dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"

@@ -16,7 +16,7 @@ data class Post(
         val thisTime = spd.parse(this.time)
         val otherTime = spd.parse(other.time)
 
-        return thisTime.compareTo(otherTime)
+        return otherTime.compareTo(thisTime)
     }
 
     override fun toString(): String = "$time $image $description $location"
