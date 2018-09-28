@@ -51,10 +51,11 @@ class TimelineFragment: Fragment() {
 
         postModelProvider.getAllPosts().observe(this, Observer {
             recyclerView_timeline.adapter = TimelineAdapter(it!!.sorted(), context!!) {item: Post -> onItemClick(item)}
+            recyclerView_timeline.setHasFixedSize(true)
             if (viewMode == "LIST") {
                 recyclerView_timeline.layoutManager = LinearLayoutManager(context)
             } else {
-                recyclerView_timeline.layoutManager = GridLayoutManager(context, 2)
+                recyclerView_timeline.layoutManager = GridLayoutManager(context, sp.getString(getString(R.string.prefs_key_grid_span), "2").toInt())
             }
         })
     }

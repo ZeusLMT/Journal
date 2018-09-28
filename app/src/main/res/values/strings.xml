@@ -20,6 +20,8 @@
     <string name="settings_title">Settings</string>
 
     <!--Shared Preferences-->
+    <string name="prefs_key_category_timeline">prefs_cat_timeline</string>
+    <string name="category_timeline">Timeline display</string>
     <string name="prefs_key_view_mode">prefs_ViewMode</string>
     <string-array name="ViewMode_names">
         <item>Timeline View</item>
@@ -29,7 +31,22 @@
         <item>LIST</item>
         <item>GRID</item>
     </string-array>
+    <string name="prefs_key_grid_span">prefs_GridSpan</string>
+    <string-array name="GridSpan_names">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="GridSpan_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 
+    <string name="prefs_key_category_general">prefs_cat_general</string>
+    <string name="category_general">General</string>
     <string name="prefs_key_app_theme">prefs_Theme</string>
     <string-array name="Theme_names">
         <item>Light mode</item>

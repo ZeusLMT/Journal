@@ -60,8 +60,6 @@ class LocationUpdate {
                 Log.d("LocationFailure", t.toString())
             }
         }
-
         call.enqueue(value)
-        //Log.d("YOOOO", "$trueLocationCity")
     }
 }

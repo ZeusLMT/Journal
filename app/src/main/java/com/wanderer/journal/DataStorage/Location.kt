@@ -15,6 +15,7 @@ data class Location (
         val city: String,
         val country: String) {
 
+
     override fun toString(): String {
         return "$neighbourhood, $city, $country"
     }
