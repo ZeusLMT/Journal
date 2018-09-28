@@ -88,9 +88,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_settings_white_24dp" />
-                            <entry key="sourceFile" value="C:\Users\Zeus" />
+                            <entry key="outputName" value="ic_splash_icon" />
+                            <entry key="sourceFile" value="C:\Users\Zeus\Desktop\Icons\splash_icon.svg" />
                           </map>
                         </option>
                       </PersistentState>
