@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Journal</string>
 
+    <!--Splash Activity-->
+    <string name="splash_icon_desc">Journal app icon</string>
+
     <!--Main Activity-->
     <string name="main_title">Timeline</string>
     <string name="action_settings">Settings</string>
