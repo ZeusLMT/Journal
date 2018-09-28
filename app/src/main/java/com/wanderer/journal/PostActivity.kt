@@ -34,6 +34,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
         private const val REQUEST_IMAGE_CAPTURE = 1
     }
     private var curPicPath: String = ""
+    private var previousPicPath: String = ""
     private var time: String = ""
     private var desc: String = ""
     private val postDB = PostDB.get(this)
@@ -59,6 +60,10 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            if(previousPicPath != curPicPath){
+                val filePre = File(previousPicPath)
+                filePre.delete().toString()
+            }
             //Update location as camera activity is done
             loc.onUpdateLocation(this, this)
 
@@ -69,6 +74,9 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             val imageBitmap = squareCropImg(BitmapFactory.decodeFile(curPicPath))
             post_img.setImageBitmap(imageBitmap)
             Log.d("ActivityResult", "OK")
+        } else if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_CANCELED){
+            val fileCur = File(curPicPath)
+            fileCur.delete().toString()
         }
     }
 
@@ -96,6 +104,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
                 ".jpg", /* suffix */
                 storageDir /* directory */
         ).apply {
+            previousPicPath = curPicPath
             curPicPath = absolutePath
             Log.d("PicStoragePath", curPicPath)
         }
