@@ -145,6 +145,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.cancel_button -> {
+                File(curPicPath).delete()
                 finish()
             }
             R.id.save_button -> {
@@ -164,6 +165,13 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    //Delete generated file when user cancel save post
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val file = File(curPicPath)
+        file.delete()
     }
 
 }
