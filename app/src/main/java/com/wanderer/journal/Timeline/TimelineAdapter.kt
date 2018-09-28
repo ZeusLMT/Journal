@@ -72,7 +72,7 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
                     holder.dividerBottom.visibility = View.GONE
                 }
 
-                holder.itemView.setOnClickListener {clickListener(thisPost)}
+                holder.imageView.setOnClickListener {clickListener(thisPost)}
             }
             "GRID" -> {
                 (holder as GridViewHolder).imageView.setImageBitmap(imageBitmap)

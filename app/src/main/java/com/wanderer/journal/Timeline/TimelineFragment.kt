@@ -13,7 +13,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostModel
 import com.wanderer.journal.R
@@ -41,8 +40,7 @@ class TimelineFragment: Fragment() {
     }
 
     private fun onItemClick(item: Post) {
-        Toast.makeText(context, item.description, Toast.LENGTH_SHORT).show()
-        //Pass Post to MainActivity
+        //Pass post to MainActivity
         activityCallBack!!.onItemClick(item)
     }
 
