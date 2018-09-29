@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
+import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.R
 
 class DeleteDialogFragment: DialogFragment() {

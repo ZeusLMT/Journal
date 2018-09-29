@@ -1,5 +1,6 @@
 package com.wanderer.journal.SinglePost
 
+import android.app.DialogFragment
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -15,10 +16,11 @@ import com.wanderer.journal.DataStorage.PostModel
 import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.fragment_single_post.*
 
-class SinglePostFragment: Fragment() {
+class SinglePostFragment: Fragment(){
     private lateinit var timeStamp: String
     private lateinit var postModelProvider: PostModel
     private lateinit var myPost: Post
+    private val newDel = DeleteDialogFragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //Get time stamp from MainActivity
@@ -48,6 +50,9 @@ class SinglePostFragment: Fragment() {
 
             val locationDisplay = result.location.toString()
             location_stamp.text = locationDisplay
+            delete_button.setOnClickListener{
+                showDialog()
+            }
 
         }
     }
@@ -62,5 +67,11 @@ class SinglePostFragment: Fragment() {
         var cropH = (height - width) / 2
         cropH = if (cropH < 0) 0 else cropH
         return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
+    }
+
+    private fun showDialog(){
+        val fm = this.activity?.fragmentManager
+        newDel.show(fm, "Delete")
+        Log.d("DeleteDial", "showDialog")
     }
 }
