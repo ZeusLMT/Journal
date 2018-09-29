@@ -59,4 +59,10 @@
 
     <!--Errors-->
     <string name="location_error">Location error</string>
+
+    <!--Delete Dialog-->
+    <string name="delete_dialog_title">Delete photo?</string>
+    <string name="delete_dialog_confirm">Yes</string>
+    <string name="delete_dialog_cancel">No</string>
+    <string name="delete_dialog_message">You will not be able to revert the change!</string>
 </resources>

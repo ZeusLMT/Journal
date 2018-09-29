@@ -155,6 +155,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
                 else if (desc.isBlank()) Toast.makeText(this, "Description empty. Please fill", Toast.LENGTH_SHORT).show()
                 else {
                     doAsync {
+
                         val newLocation = Location(0, time, loc.latLocation.toString(), loc.lonLocation.toString(), loc.trueLocationNeighbourhood, loc.trueLocationCity, loc.trueLocationCountry)
                         val newPost = Post(time, curPicPath, desc, newLocation)
                         postDB.postDao().insert(newPost)
