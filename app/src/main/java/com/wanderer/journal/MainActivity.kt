@@ -9,11 +9,14 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.wanderer.journal.DataStorage.Post
+import com.wanderer.journal.DataStorage.PostDB
 import com.wanderer.journal.Settings.SettingsActivity
 import com.wanderer.journal.SinglePost.DeleteDialogFragment
 import com.wanderer.journal.SinglePost.SinglePostFragment
 import com.wanderer.journal.Timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.UI
+import org.jetbrains.anko.doAsync
 import java.io.File
 
 class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener, DeleteDialogFragment.DeleteDialogListener{
@@ -22,6 +25,7 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
     }
     private val timelineFragment = TimelineFragment()
     private val singlePostFrag = SinglePostFragment()
+    //private val postDB = PostDB.get(this)
     private lateinit var curPost: Post
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,8 +91,14 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
 
     override fun onDeletePositiveClick(dialog: DialogFragment) {
         Log.d("DeleteDial", "positive")
-        //File(curPost.image).delete()
-        //supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, timelineFragment).commit()
+        val postDB = PostDB.get(this)
+        doAsync {
+            File(curPost.image).delete()
+            postDB.postDao().deletePost(curPost)
+            UI {
+                supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, timelineFragment).commit()
+            }
+        }
     }
 
     override fun onDeleteNegativeClick(dialog: DialogFragment) {
