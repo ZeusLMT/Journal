@@ -1,5 +1,6 @@
 package com.wanderer.journal
 
+import android.app.DialogFragment
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -9,16 +10,18 @@ import android.view.Menu
 import android.view.MenuItem
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.Settings.SettingsActivity
+import com.wanderer.journal.SinglePost.DeleteDialogFragment
 import com.wanderer.journal.SinglePost.SinglePostFragment
 import com.wanderer.journal.Timeline.TimelineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener {
+class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener, DeleteDialogFragment.DeleteDialogListener {
     companion object {
         const val REQUEST_SETTINGS = 1
     }
     private val timelineFragment = TimelineFragment()
     private val singlePostFrag = SinglePostFragment()
+    private val newDel = DeleteDialogFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Initialize Shared Preference and set up theme
@@ -33,8 +36,9 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
         if (savedInstanceState == null) supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, timelineFragment).commit()
         Log.d("abc", "Main onCreate")
         fab_add.setOnClickListener {
-            val intent = Intent(this, PostActivity::class.java).apply{}
-            startActivity(intent)
+            //val intent = Intent(this, PostActivity::class.java).apply{}
+            //startActivity(intent)
+            showDialog()
         }
 
     }
@@ -77,5 +81,18 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
         bundle.putString("timeStamp", item.time)
         singlePostFrag.arguments = bundle
         supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, singlePostFrag).addToBackStack(null).commit()
+    }
+
+    override fun onDeletePositiveClick(dialog: DialogFragment) {
+        Log.d("DELETELOG", "Positive")
+    }
+
+    override fun onDeleteNegativeClick(dialog: DialogFragment) {
+        Log.d("DELETELOG", "Negative")
+    }
+
+    private fun showDialog(){
+        newDel.show(fragmentManager, "")
+        Log.d("DeleteDial", "showDialog")
     }
 }
