@@ -52,13 +52,14 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisPost = dataset[position]
         val sp = PreferenceManager.getDefaultSharedPreferences(appContext)
-        val imageBitmap = squareCropImg(BitmapFactory.decodeFile(thisPost.image))
+        //val imageBitmap = squareCropImg(BitmapFactory.decodeFile(thisPost.image))
 
         when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
             "LIST" -> {
-                (holder as ListViewHolder).imageView.setImageBitmap(imageBitmap)
-                holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
+                //(holder as ListViewHolder).imageView.setImageBitmap(imageBitmap)
+                (holder as ListViewHolder).imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
                 holder.timestampTextView.text = thisPost.time.substringBefore(" ")
+                setScaledImage(holder.imageView, thisPost.image)
 
                 if (position == 0) {
                     holder.dividerTop.visibility = View.GONE
@@ -77,10 +78,11 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                 holder.imageView.setOnClickListener {clickListener(thisPost)}
             }
             "GRID" -> {
-                (holder as GridViewHolder).imageView.setImageBitmap(imageBitmap)
-                holder.imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
+                //(holder as GridViewHolder).imageView.setImageBitmap(imageBitmap)
+                (holder as GridViewHolder).imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
                 holder.locationTextView.text = thisPost.location.city
                 holder.itemView.setOnClickListener {clickListener(thisPost)}
+                setScaledImage(holder.imageView, thisPost.image)
             }
         }
     }
@@ -104,5 +106,31 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
         var cropH = (height - width) / 2
         cropH = if (cropH < 0) 0 else cropH
         return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
+    }
+
+    private fun setScaledImage(imageView: ImageView, imagePath: String) {
+        // Get the dimensions of the View
+        val targetW = 320
+
+        val bmOptions = BitmapFactory.Options().apply {
+            // Get the dimensions of the bitmap
+            inJustDecodeBounds = true
+            BitmapFactory.decodeFile(imagePath, this)
+            val photoW: Int = outWidth
+            val photoH: Int = outHeight
+            val ratio = photoW.toFloat() / photoH.toFloat()
+            val targetH = (targetW / ratio).toInt()
+            Log.d("abcd", "$photoW, $photoH, $ratio, $targetW, $targetH")
+
+            // Determine how much to scale down the image
+            val scaleFactor: Int = Math.min(photoW / targetW, photoH / targetH)
+
+            // Decode the image file into a Bitmap sized to fill the View
+            inJustDecodeBounds = false
+            inSampleSize = scaleFactor
+        }
+        BitmapFactory.decodeFile(imagePath, bmOptions)?.also { bitmap ->
+            imageView.setImageBitmap(squareCropImg(bitmap))
+        }
     }
 }
