@@ -14,7 +14,9 @@ import android.widget.TextView
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.R
 
-class TimelineAdapter (private val dataset: List<Post>, private val appContext: Context, val clickListener: (Post) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TimelineAdapter (private val appContext: Context, val clickListener: (Post) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private var dataset: List<Post> = emptyList()
+
     class GridViewHolder (private val itemView: View,
                          val locationTextView: TextView = itemView.findViewById(R.id.location),
                          val imageView: ImageView = itemView.findViewById(R.id.imageView_grid)) : RecyclerView.ViewHolder(itemView)
@@ -81,6 +83,11 @@ class TimelineAdapter (private val dataset: List<Post>, private val appContext: 
                 holder.itemView.setOnClickListener {clickListener(thisPost)}
             }
         }
+    }
+
+    fun setData(newData: List<Post>) {
+        dataset = newData
+        notifyDataSetChanged()
     }
 
     private fun comparePost(thisPost: Post, otherPost: Post): Boolean {

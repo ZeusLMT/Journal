@@ -14,7 +14,6 @@ import com.wanderer.journal.Settings.SettingsActivity
 import com.wanderer.journal.SinglePost.DeleteDialogFragment
 import com.wanderer.journal.SinglePost.SinglePostFragment
 import com.wanderer.journal.Timeline.TimelineFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
 import java.io.File
@@ -38,12 +37,8 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
         Log.d("Wonderful", "Wonderful")
 
         //Open timeline fragment if not already there
-        if (savedInstanceState == null) supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, timelineFragment).commit()
+        if (savedInstanceState == null) supportFragmentManager.beginTransaction().add(R.id.FrameLayout_mainscreen, TimelineFragment()).commit()
         Log.d("abc", "Main onCreate")
-        fab_add.setOnClickListener {
-            val intent = Intent(this, PostActivity::class.java).apply{}
-            startActivity(intent)
-        }
 
     }
 
@@ -86,7 +81,7 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
         val bundle = Bundle()
         bundle.putString("timeStamp", item.time)
         singlePostFrag.arguments = bundle
-        supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, singlePostFrag).addToBackStack(null).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, singlePostFrag).commit()
     }
 
     override fun onDeletePositiveClick(dialog: DialogFragment) {
@@ -96,7 +91,7 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
             File(curPost.image).delete()
             postDB.postDao().deletePost(curPost)
             UI {
-                supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, timelineFragment).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.FrameLayout_mainscreen, TimelineFragment()).commit()
             }
         }
     }
