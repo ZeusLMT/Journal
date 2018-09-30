@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="app_bar_height">400dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <!--Floating action button-->
+    <dimen name="design_fab_image_size" tools:override="true">45dp</dimen>
+</resources>

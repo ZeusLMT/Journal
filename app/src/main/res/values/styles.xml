@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.PastelLight" parent="Theme.AppCompat.Light.DarkActionBar" >
+    <style name="AppTheme.PastelLight" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/pastelLight_Primary</item>
         <item name="colorPrimaryDark">@color/pastelLight_PrimaryDark</item>
         <item name="colorAccent">@color/pastelLight_Accent</item>
@@ -16,12 +16,26 @@
         <item name="android:navigationBarColor">@color/pastelLight_PrimaryDark</item>
     </style>
 
-    <style name="AppTheme.PastelDark" parent="Theme.AppCompat" >
+    <style name="AppTheme.PastelDark" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/pastelDark_Primary</item>
         <item name="colorPrimaryDark">@color/pastelDark_PrimaryDark</item>
         <item name="colorAccent">@color/pastelDark_Accent</item>
         <item name="android:navigationBarColor">@color/pastelDark_PrimaryDark</item>
         <item name="android:colorBackground">@color/pastelDark_Background</item>
+    </style>
+
+    <style name="AppTheme.PastelLight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.PastelLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PastelLight.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.PastelDark.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>

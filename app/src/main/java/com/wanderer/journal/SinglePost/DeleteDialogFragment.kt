@@ -4,10 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.app.DialogFragment
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.R
 
 class DeleteDialogFragment: DialogFragment() {
@@ -24,14 +22,14 @@ class DeleteDialogFragment: DialogFragment() {
             val builder = AlertDialog.Builder(it)
             builder.setMessage(R.string.delete_dialog_message)
                     .setTitle(R.string.delete_dialog_title)
-                    .setPositiveButton(R.string.delete_dialog_confirm, DialogInterface.OnClickListener { dialog, id ->
+                    .setPositiveButton(R.string.delete_dialog_confirm) { _, _ ->
                         //confirm
                         dialogListener.onDeletePositiveClick(this)
-                    })
-                    .setNegativeButton(R.string.delete_dialog_cancel, DialogInterface.OnClickListener{dialog, id ->
+                    }
+                    .setNegativeButton(R.string.delete_dialog_cancel) { _, _ ->
                         //Cancel
                         dialogListener.onDeleteNegativeClick(this)
-                    })
+                    }
             builder.create()
         } ?: throw IllegalStateException("Activity cant be null")
     }

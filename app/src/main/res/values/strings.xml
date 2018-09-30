@@ -16,6 +16,15 @@
     <string name="save_desc">Save button</string>
     <string name="description_hint">Save your thoughts here…</string>
 
+    <!--Single Post Activity-->
+    <string name="date">dd.mm.yyyy</string>
+    <string name="location">location</string>
+    <string name="description">description</string>
+    <string name="icon_des_date">calendar icon</string>
+    <string name="icon_des_location">map marker icon</string>
+    <string name="icon_des_quote">quote icon</string>
+    <string name="img_desc">image</string>
+
     <!--Settings Activity-->
     <string name="settings_title">Settings</string>
 
@@ -61,8 +70,35 @@
     <string name="location_error">Location error</string>
 
     <!--Delete Dialog-->
-    <string name="delete_dialog_title">Delete photo?</string>
+    <string name="delete_dialog_title">Delete entry?</string>
     <string name="delete_dialog_confirm">Yes</string>
     <string name="delete_dialog_cancel">No</string>
-    <string name="delete_dialog_message">You will not be able to revert the change!</string>
+    <string name="delete_dialog_message">Erased memories cannot be restored!</string>
+
+    <!--Other-->
+    <string name="title_activity_single_post">SinglePostActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user."
+    </string>
 </resources>
