@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
+import android.widget.Toast
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostDB
 import com.wanderer.journal.DataStorage.PostModel
@@ -21,7 +22,7 @@ import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
 import java.io.File
 
-class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialogListener {
+class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialogListener, OptionModalFragment.OptionModalListener {
     private lateinit var timestamp: String
     private lateinit var postModelProvider: PostModel
     private lateinit var myPost: Post
@@ -69,6 +70,8 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         }
     }
 
+    //DELETE DIALOG
+
     override fun onDeletePositiveClick(dialog: DialogFragment) {
         Log.d("DeleteDial", "positive")
         val postDB = PostDB.get(this)
@@ -100,8 +103,6 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
     }
 
     private fun showDialog() {
-        //val fm = this.fragmentManager
-        //newDel.show(fm, "Delete")
         val fm = this.supportFragmentManager
         optionModalFragment.show(fm, "option")
         Log.d("DeleteDial", "showDialog")
@@ -115,4 +116,23 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             "DARK" -> setTheme(R.style.AppTheme_PastelDark_NoActionBar)
         }
     }
+
+    override fun onOptionClick(id: String) {
+        when(id){
+            "delete" -> {
+                val fm = this.fragmentManager
+                newDel.show(fm, "Delete")
+            }
+            "edit" -> {
+                Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
+            }
+            "map" -> {
+                Toast.makeText(this, "map clicked", Toast.LENGTH_SHORT).show()
+            }
+            "dismiss" -> {
+                Toast.makeText(this, "Delete clicked", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 }
