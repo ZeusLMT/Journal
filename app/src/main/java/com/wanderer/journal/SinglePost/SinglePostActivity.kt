@@ -26,6 +26,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
     private lateinit var postModelProvider: PostModel
     private lateinit var myPost: Post
     private val newDel = DeleteDialogFragment()
+    private val optionModalFragment = OptionModalFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Initialize Shared Preference and set up theme
@@ -99,8 +100,10 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
     }
 
     private fun showDialog() {
-        val fm = this.fragmentManager
-        newDel.show(fm, "Delete")
+        //val fm = this.fragmentManager
+        //newDel.show(fm, "Delete")
+        val fm = this.supportFragmentManager
+        optionModalFragment.show(fm, "option")
         Log.d("DeleteDial", "showDialog")
     }
 

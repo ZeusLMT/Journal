@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
         const val REQUEST_SETTINGS = 1
     }
     private val timelineFragment = TimelineFragment()
-    //private val postDB = PostDB.get(this)
     private lateinit var curPost: Post
 
     override fun onCreate(savedInstanceState: Bundle?) {
