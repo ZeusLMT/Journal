@@ -38,8 +38,6 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         fab_edit.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
             showDialog()
         }
 
@@ -56,7 +54,6 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         override fun doInBackground(vararg params: String): Post {
             postModelProvider = ViewModelProviders.of(this@SinglePostActivity).get(PostModel::class.java)
             myPost = postModelProvider.getSinglePost(params[0])
-            Log.d("abc", myPost.toString())
             return myPost
         }
 

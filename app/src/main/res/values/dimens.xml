@@ -3,5 +3,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <!--Floating action button-->
-    <dimen name="design_fab_image_size" tools:override="true">45dp</dimen>
+    <dimen name="design_fab_image_size" tools:override="true">36dp</dimen>
 </resources>
