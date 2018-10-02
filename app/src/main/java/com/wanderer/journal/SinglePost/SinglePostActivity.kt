@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostDB
 import com.wanderer.journal.DataStorage.PostModel
+import com.wanderer.journal.EditPostActivity
 import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.activity_single_post.*
 import kotlinx.android.synthetic.main.content_single_post.*
@@ -150,6 +151,9 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             }
             "edit" -> {
                 Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, EditPostActivity::class.java)
+                intent.putExtra("timestamp", timestamp)
+                startActivity(intent)
             }
             "map" -> {
                 Toast.makeText(this, "map clicked", Toast.LENGTH_SHORT).show()
@@ -165,6 +169,8 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
                 } else Toast.makeText(this, "Error opening app", Toast.LENGTH_SHORT).show()
             }
         }
+
+        optionModalFragment.dismiss()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
