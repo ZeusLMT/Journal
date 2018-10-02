@@ -15,6 +15,13 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostDB
 import com.wanderer.journal.DataStorage.PostModel
@@ -25,12 +32,13 @@ import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
 import java.io.File
 
-class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialogListener, OptionModalFragment.OptionModalListener {
+class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialogListener, OptionModalFragment.OptionModalListener, OnMapReadyCallback {
     private lateinit var timestamp: String
     private lateinit var postModelProvider: PostModel
     private lateinit var myPost: Post
     private val newDel = DeleteDialogFragment()
     private val optionModalFragment = OptionModalFragment()
+    private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Initialize Shared Preference and set up theme
@@ -42,9 +50,13 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        fab_edit.setOnClickListener { view ->
+        fab_edit.setOnClickListener {
             //showBottomSheet()
         }
+
+        val mapFragment = supportFragmentManager
+                .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
         timestamp = intent.getStringExtra("timestamp")
         GetData().execute(timestamp)
@@ -79,6 +91,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
 
             val locationDisplay = result.location.toString()
             textView_location.text = locationDisplay
+
         }
     }
 
@@ -154,4 +167,11 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         }
     }
 
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        val location = LatLng(myPost.location.latitude.toDouble(), myPost.location.longitude.toDouble())
+        mMap.addMarker(MarkerOptions().position(location).title("Image location").icon(BitmapDescriptorFactory.fromResource(R.drawable.place_marker)))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+    }
 }

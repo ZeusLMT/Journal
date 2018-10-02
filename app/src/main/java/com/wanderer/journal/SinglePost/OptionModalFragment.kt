@@ -27,6 +27,7 @@ class OptionModalFragment: BottomSheetDialogFragment() {
         }
         view.map_text.setOnClickListener {
             optionModalListener.onOptionClick("map")
+            dismiss()
         }
         view.galley_text.setOnClickListener {
             optionModalListener.onOptionClick("gallery")

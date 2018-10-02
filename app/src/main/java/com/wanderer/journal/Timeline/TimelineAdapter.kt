@@ -110,7 +110,7 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
 
     private fun setScaledImage(imageView: ImageView, imagePath: String) {
         // Get the dimensions of the View
-        val targetW = 320
+        val targetW = 640
 
         val bmOptions = BitmapFactory.Options().apply {
             // Get the dimensions of the bitmap
