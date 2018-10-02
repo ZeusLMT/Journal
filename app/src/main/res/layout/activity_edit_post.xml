@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostActivity">
+    tools:context=".EditPostActivity">
 
     <ImageView
-        android:id="@+id/post_img"
+        android:id="@+id/edit_post_img"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/post_image_desc"
         android:elevation="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintBottom_toTopOf="@+id/edit_description"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/default_image" />
 
     <EditText
-        android:id="@+id/description"
+        android:id="@+id/edit_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,17 +31,17 @@
         android:layout_marginBottom="8dp"
         android:hint="@string/description_hint"
         android:inputType="textCapSentences"
-        app:layout_constraintBottom_toTopOf="@+id/cancel_button"
+        app:layout_constraintBottom_toTopOf="@+id/edit_cancel_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/cancel_button"
+        android:id="@+id/edit_cancel_button"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:adjustViewBounds="false"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/cancel_desc"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/save_button"
+        android:id="@+id/edit_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
