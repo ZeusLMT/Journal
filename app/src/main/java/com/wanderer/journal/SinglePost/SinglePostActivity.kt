@@ -2,12 +2,14 @@ package com.wanderer.journal.SinglePost
 
 import android.app.DialogFragment
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.design.widget.Snackbar
+import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
@@ -139,8 +141,15 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             "map" -> {
                 Toast.makeText(this, "map clicked", Toast.LENGTH_SHORT).show()
             }
-            "dismiss" -> {
-                Toast.makeText(this, "Delete clicked", Toast.LENGTH_SHORT).show()
+            "gallery" -> {
+                val imgFile = File(myPost.image)
+                val imgUri = FileProvider.getUriForFile(this, "com.wanderer.journal", imgFile)
+                val viewIntent = Intent(Intent.ACTION_VIEW)
+                if (viewIntent.resolveActivity(packageManager) != null) {
+                    viewIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    viewIntent.data = imgUri
+                    startActivity(viewIntent)
+                } else Toast.makeText(this, "Error opening app", Toast.LENGTH_SHORT).show()
             }
         }
     }

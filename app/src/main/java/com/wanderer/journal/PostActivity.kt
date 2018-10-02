@@ -83,7 +83,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
     private fun dispatchTakePictureIntent() {
         val myIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         val imgFile: File = createImageFile()
-        val imgURI: Uri = FileProvider.getUriForFile(this, "com.example.fileprovider", imgFile)
+        val imgURI: Uri = FileProvider.getUriForFile(this, "com.wanderer.journal", imgFile)
 
         if (myIntent.resolveActivity(packageManager) != null) {
             myIntent.putExtra(MediaStore.EXTRA_OUTPUT, imgURI)
