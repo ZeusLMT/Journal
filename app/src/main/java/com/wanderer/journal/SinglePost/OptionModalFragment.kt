@@ -1,6 +1,5 @@
 package com.wanderer.journal.SinglePost
 
-import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
@@ -20,17 +19,17 @@ class OptionModalFragment: BottomSheetDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.bottom_sheet, container, false)
-        view.delete_icon.setOnClickListener {
+        view.delete_text.setOnClickListener {
             optionModalListener.onOptionClick("delete")
         }
-        view.edit_icon.setOnClickListener {
+        view.edit_text.setOnClickListener {
             optionModalListener.onOptionClick("edit")
         }
-        view.map_view_icon.setOnClickListener {
+        view.map_text.setOnClickListener {
             optionModalListener.onOptionClick("map")
         }
-        view.dismiss_button_icon.setOnClickListener {
-            optionModalListener.onOptionClick("dismiss")
+        view.galley_text.setOnClickListener {
+            optionModalListener.onOptionClick("gallery")
         }
 
         return view

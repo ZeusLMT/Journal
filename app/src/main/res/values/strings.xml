@@ -24,6 +24,7 @@
     <string name="icon_des_location">map marker icon</string>
     <string name="icon_des_quote">quote icon</string>
     <string name="img_desc">image</string>
+    <string name="action_menu">options</string>
 
     <!--Settings Activity-->
     <string name="settings_title">Settings</string>
@@ -76,14 +77,11 @@
     <string name="delete_dialog_message">Erased memories cannot be restored!</string>
 
     <!--Modal bottom sheet-->
-    <string name="modal_map">Switch to map view</string>
-    <string name="modal_edit">Edit current entry</string>
-    <string name="modal_delete">Delete entry</string>
-    <string name="modal_dismiss">Return to entry</string>
-    <string name="modal_map_text">Map View</string>
+    <string name="modal_title">Select action</string>
     <string name="modal_edit_text">Edit</string>
     <string name="modal_delete_text">Delete</string>
-    <string name="modal_dismiss_text">Dismiss</string>
+    <string name="modal_gallery_text">Open in gallery</string>
+    <string name="modal_map_text">Find on map</string>
 
     <!--Other-->
     <string name="title_activity_single_post">SinglePostActivity</string>

@@ -1,113 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_sheet_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/modal_title"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:columnCount="4"
-        android:rowCount="1">
+        android:paddingBottom="16dp"
+        android:rowCount="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:orientation="vertical">
+            android:background="?attr/selectableItemBackground"
+            android:drawableTop="@drawable/edit"
+            android:drawablePadding="8dp"
+            android:text="@string/modal_edit_text"
+            android:textAlignment="center" />
 
-            <ImageView
-                android:id="@+id/map_view_icon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:contentDescription="@string/modal_map"
-                app:srcCompat="@drawable/map" />
-
-            <TextView
-                android:id="@+id/map_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/modal_map_text"
-                android:textAlignment="center"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/delete_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_columnWeight="1">
+            android:layout_columnWeight="1"
+            android:background="?attr/selectableItemBackground"
+            android:drawableTop="@drawable/delete"
+            android:drawablePadding="8dp"
+            android:text="@string/modal_delete_text"
+            android:textAlignment="center" />
 
-            <ImageView
-                android:id="@+id/edit_icon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:contentDescription="@string/modal_edit"
-                app:srcCompat="@drawable/checkmark" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/modal_edit_text"
-                android:textAlignment="center"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/map_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_columnWeight="1">
+            android:layout_columnWeight="1"
+            android:background="?attr/selectableItemBackground"
+            android:drawableTop="@drawable/map"
+            android:drawablePadding="8dp"
+            android:text="@string/modal_map_text"
+            android:textAlignment="center" />
 
-            <ImageView
-                android:id="@+id/delete_icon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:contentDescription="@string/modal_delete"
-                app:srcCompat="@drawable/delete" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/modal_delete_text"
-                android:textAlignment="center"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/galley_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_columnWeight="1">
-
-            <ImageView
-                android:id="@+id/dismiss_button_icon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:contentDescription="@string/modal_dismiss"
-                app:srcCompat="@drawable/cancel" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/modal_dismiss_text"
-                android:textAlignment="center"
-                android:textSize="12sp" />
-        </LinearLayout>
+            android:layout_columnWeight="1"
+            android:background="?attr/selectableItemBackground"
+            android:drawableTop="@drawable/gallery"
+            android:drawablePadding="8dp"
+            android:text="@string/modal_gallery_text"
+            android:textAlignment="center" />
     </GridLayout>
 
 </android.support.constraint.ConstraintLayout>

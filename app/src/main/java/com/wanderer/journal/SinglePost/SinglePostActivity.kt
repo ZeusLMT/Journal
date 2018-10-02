@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostDB
@@ -40,7 +41,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         fab_edit.setOnClickListener { view ->
-            showDialog()
+            //showBottomSheet()
         }
 
         timestamp = intent.getStringExtra("timestamp")
@@ -50,6 +51,15 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_single_post, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?) = when (item!!.itemId) {
+        R.id.action_options -> {
+            showBottomSheet()
+            true
+        }
+
+        else -> super.onOptionsItemSelected(item)
     }
 
     inner class GetData : AsyncTask<String, Unit, Post>() {
@@ -102,10 +112,10 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
     }
 
-    private fun showDialog() {
+    private fun showBottomSheet() {
         val fm = this.supportFragmentManager
         optionModalFragment.show(fm, "option")
-        Log.d("DeleteDial", "showDialog")
+        Log.d("DeleteDial", "showBottomSheet")
     }
 
     private fun changeTheme() {
