@@ -156,6 +156,8 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
                 } else Toast.makeText(this, "Error opening app", Toast.LENGTH_SHORT).show()
             }
         }
+
+        optionModalFragment.dismiss()
     }
 
 }
