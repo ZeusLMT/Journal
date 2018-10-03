@@ -1,11 +1,11 @@
-package com.wanderer.journal
+package com.wanderer.journal.EditPost
 
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -13,6 +13,8 @@ import android.widget.Toast
 import com.wanderer.journal.DataStorage.Location
 import com.wanderer.journal.DataStorage.Post
 import com.wanderer.journal.DataStorage.PostDB
+import com.wanderer.journal.MainActivity
+import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.activity_edit_post.*
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync

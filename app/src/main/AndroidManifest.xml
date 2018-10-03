@@ -40,8 +40,8 @@
             android:name=".Settings.SettingsActivity"
             android:label="@string/settings_title" />
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:name=".SplashScreen.SplashActivity"
+            android:theme="@style/AppTheme.PastelLight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +52,7 @@
             android:name=".SinglePost.SinglePostActivity"
             android:label="@string/title_activity_single_post"
             android:theme="@style/AppTheme.PastelLight.NoActionBar" />
-        <activity android:name=".EditPostActivity"></activity>
+        <activity android:name=".EditPost.EditPostActivity"></activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

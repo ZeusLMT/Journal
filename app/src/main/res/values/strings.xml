@@ -3,6 +3,10 @@
 
     <!--Splash Activity-->
     <string name="splash_icon_desc">Journal app icon</string>
+    <string name="splash_next_desc">Next step icon</string>
+    <string name="user_greetings">Welcome to Journal</string>
+    <string name="username">Username</string>
+    <string name="passcode">Passcode</string>
 
     <!--Main Activity-->
     <string name="main_title">Timeline</string>
@@ -32,6 +36,7 @@
     <!--Shared Preferences-->
     <string name="prefs_key_category_timeline">prefs_cat_timeline</string>
     <string name="category_timeline">Timeline display</string>
+
     <string name="prefs_key_view_mode">prefs_ViewMode</string>
     <string-array name="ViewMode_names">
         <item>Timeline View</item>
@@ -41,6 +46,7 @@
         <item>LIST</item>
         <item>GRID</item>
     </string-array>
+
     <string name="prefs_key_grid_span">prefs_GridSpan</string>
     <string-array name="GridSpan_names">
         <item>1</item>
@@ -55,8 +61,10 @@
         <item>4</item>
     </string-array>
 
+
     <string name="prefs_key_category_general">prefs_cat_general</string>
     <string name="category_general">General</string>
+
     <string name="prefs_key_app_theme">prefs_Theme</string>
     <string-array name="Theme_names">
         <item>Light mode</item>
@@ -66,6 +74,13 @@
         <item>LIGHT</item>
         <item>DARK</item>
     </string-array>
+
+
+    <string name="prefs_key_first_visit">prefs_FirstVisit</string>
+    <string name="prefs_key_username">prefs_Username</string>
+
+
+    <string name="prefs_key_passcode">prefs_Passcode</string>
 
     <!--Errors-->
     <string name="location_error">Location error</string>
@@ -97,16 +112,6 @@
         "world, without breaking the rules of physics.\n"
         "The fundamentals of light, surface, and movement are key to conveying how objects move, "
         "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
-
-        "Bold, graphic, intentional.\n\n"
-
-        "The foundational elements of print based design typography, grids, space, scale, color, "
-        "and use of imagery guide visual treatments. These elements do far more than please the "
-        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
-        "imagery, large scale typography, and intentional white space create a bold and graphic "
-        "interface that immerse the user in the experience.\n"
-        "An emphasis on user actions makes core functionality immediately apparent and provides "
-        "waypoints for the user."
+        "seams, divides space, and indicates moving parts."
     </string>
 </resources>

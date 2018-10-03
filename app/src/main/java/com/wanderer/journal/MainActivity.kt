@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
     private lateinit var curPost: Post
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //Initialize Shared Preference and set up theme
-        PreferenceManager.setDefaultValues(this, R.xml.prefs, false)
+        //Set up theme
         changeTheme()
 
         super.onCreate(savedInstanceState)
