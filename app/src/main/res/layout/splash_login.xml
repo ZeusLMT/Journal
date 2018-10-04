@@ -80,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/passcode"
+            android:imeOptions="actionDone"
             android:inputType="numberPassword"
             android:maxLength="4"
             android:textColor="?android:attr/textColorPrimaryInverse" />

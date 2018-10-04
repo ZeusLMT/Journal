@@ -9,6 +9,7 @@
             android:entries="@array/Theme_names"
             android:entryValues="@array/Theme_values"
             android:key="@string/prefs_key_app_theme"
+            android:summary="%s"
             android:title="App theme" />
     </PreferenceCategory>
     <PreferenceCategory

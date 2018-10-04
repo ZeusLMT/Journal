@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.animation.AnimationUtils
+import android.view.inputmethod.EditorInfo
 import com.wanderer.journal.MainActivity
 import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.splash_login.*
@@ -26,18 +27,20 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var sp: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //Initialize Shared Preferences
-        PreferenceManager.setDefaultValues(this, R.xml.prefs, false)
-        PreferenceManager.setDefaultValues(this, R.xml.other_prefs, false)
-        sp = PreferenceManager.getDefaultSharedPreferences(this)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        //Initialize Shared Preferences
+        sp = PreferenceManager.getDefaultSharedPreferences(this)
+        if (!sp.getBoolean(PreferenceManager.KEY_HAS_SET_DEFAULT_VALUES, false)) {
+            PreferenceManager.setDefaultValues(this, R.xml.prefs, false);
+            PreferenceManager.setDefaultValues(this, R.xml.other_prefs, true);
+        }
 
         val handler = Handler()
         handler.postDelayed({
             val firstVisit = sp.getBoolean(getString(R.string.prefs_key_first_visit), false)
-            Log.d("abc", sp.getBoolean(getString(R.string.prefs_key_first_visit), false).toString())
+            Log.d("abc", sp.getBoolean(getString(R.string.prefs_key_first_visit), true).toString())
             if (!firstVisit) {
                 contentView!!.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out))
                 handleLogin()
@@ -103,17 +106,29 @@ class SplashActivity : AppCompatActivity() {
     private fun handleLogin() {
         setContentView(R.layout.splash_login)
         contentView!!.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
-        val userPasscode = sp.getString(getString(R.string.prefs_key_passcode), "0000")
+
         val username = sp.getString(getString(R.string.prefs_key_username), "User")
         textView_greetings.text = getString(R.string.user_greetings, username)
+
         imageButton_next_login.setOnClickListener {
-            if (editText_passcode_login.text.toString() == userPasscode) {
-                startTimeline()
-            } else if (editText_passcode_login.text.isBlank()) {
-                passcode_login.error = "Use your passcode to get back"
-            } else {
-                passcode_login.error = "Wrong passcode, try again!"
+            login()
+        }
+
+        editText_passcode_login.setOnEditorActionListener { _, i, _ ->
+            if (i == EditorInfo.IME_ACTION_DONE) {
+                login()
             }
+            return@setOnEditorActionListener false
+        }
+    }
+
+    private fun login() {
+        val userPasscode = sp.getString(getString(R.string.prefs_key_passcode), "0000")
+
+        when {
+            editText_passcode_login.text.toString() == userPasscode -> startTimeline()
+            editText_passcode_login.text.isBlank() -> passcode_login.error = "Use your passcode to get back"
+            else -> passcode_login.error = "Wrong passcode, try again!"
         }
     }
 
