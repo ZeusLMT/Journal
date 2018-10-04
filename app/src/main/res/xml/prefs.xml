@@ -40,13 +40,15 @@
             android:dialogTitle="Select view mode"
             android:entries="@array/ViewMode_names"
             android:entryValues="@array/ViewMode_values"
-            android:defaultValue="LIST" />
+            android:defaultValue="LIST"
+            android:summary="%s" />
         <ListPreference
             android:key="@string/prefs_key_grid_span"
             android:title="Grid view: Images per row"
             android:dialogTitle="Select image(s) per row"
             android:entries="@array/GridSpan_names"
             android:entryValues="@array/GridSpan_values"
-            android:defaultValue="2" />
+            android:defaultValue="2"
+            android:summary="%s" />
     </PreferenceCategory>
 </PreferenceScreen>
