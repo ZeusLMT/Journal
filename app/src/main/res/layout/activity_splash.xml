@@ -8,7 +8,7 @@
     android:background="@drawable/splash_screen_bg">
 
     <ImageView
-        android:id="@+id/imageView_splash_icon"
+        android:id="@+id/splash_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="110dp"

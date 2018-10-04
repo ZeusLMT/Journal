@@ -11,7 +11,9 @@
             android:key="@string/prefs_key_app_theme"
             android:title="App theme" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Preference category">
+    <PreferenceCategory
+        android:title="@string/category_user"
+        android:key="@string/prefs_key_category_user">
 
         <EditTextPreference
             android:defaultValue="username"
@@ -21,11 +23,12 @@
             android:title="Change username" />
         <EditTextPreference
             android:defaultValue="0000"
+            android:inputType="numberPassword"
             android:key="@string/prefs_key_passcode"
+            android:maxLength="4"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Change passcode"
-            android:inputType="number" />
+            android:title="Change passcode" />
     </PreferenceCategory>
     <PreferenceCategory
         android:key="@string/prefs_key_category_timeline"

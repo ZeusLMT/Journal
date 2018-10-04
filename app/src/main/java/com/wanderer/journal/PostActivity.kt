@@ -2,7 +2,6 @@ package com.wanderer.journal
 
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -10,8 +9,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.preference.PreferenceManager
 import android.provider.MediaStore
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -44,14 +41,6 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
         changeTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
-
-        //Request location permission
-        if((ContextCompat.checkSelfPermission(this,
-                        android.Manifest.permission.ACCESS_FINE_LOCATION)!=
-                        PackageManager.PERMISSION_GRANTED)){
-            ActivityCompat.requestPermissions(this,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1)
-        }
 
         post_img.setOnClickListener(this)
         cancel_button.setOnClickListener(this)

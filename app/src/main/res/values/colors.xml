@@ -6,6 +6,7 @@
 
     <color name="translucent_textView">#aa212121</color>
     <color name="textView_text">#f5f5f5</color>
+    <color name="textView_warning">#ff6961</color>
 
     <color name="pastelLight_Primary">#4484ce</color>
     <color name="pastelLight_PrimaryDark">#3c6999</color>

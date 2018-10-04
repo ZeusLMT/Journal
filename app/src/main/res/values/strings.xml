@@ -4,9 +4,13 @@
     <!--Splash Activity-->
     <string name="splash_icon_desc">Journal app icon</string>
     <string name="splash_next_desc">Next step icon</string>
-    <string name="user_greetings">Welcome to Journal</string>
+    <string name="user_welcome">Welcome to Journal!</string>
+    <string name="user_greetings">Welcome back, %1$s!</string>
     <string name="username">Username</string>
     <string name="passcode">Passcode</string>
+    <string name="permission_title">Location permission</string>
+    <string name="permission_explain">Journal requests your permission only to save the location of your photos</string>
+    <string name="permission_warning">Journal NEEDS your permission for location to be fully functional</string>
 
     <!--Main Activity-->
     <string name="main_title">Timeline</string>
@@ -77,9 +81,10 @@
 
 
     <string name="prefs_key_first_visit">prefs_FirstVisit</string>
+
+    <string name="prefs_key_category_user">prefs_cat_user</string>
+    <string name="category_user">User settings</string>
     <string name="prefs_key_username">prefs_Username</string>
-
-
     <string name="prefs_key_passcode">prefs_Passcode</string>
 
     <!--Errors-->
