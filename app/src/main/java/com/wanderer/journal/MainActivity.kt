@@ -69,4 +69,6 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener 
         intent.putExtra("timestamp", item.time)
         startActivity(intent)
     }
+
+
 }

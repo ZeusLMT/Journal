@@ -103,6 +103,8 @@
     <string name="modal_gallery_text">Open in gallery</string>
     <string name="modal_map_text">Find on map</string>
 
+    <!--Facebook SDK-->
+    <string name="facebook_app_id">677377439311035</string>
     <!--Other-->
     <string name="title_activity_single_post">SinglePostActivity</string>
     <string name="large_text">
