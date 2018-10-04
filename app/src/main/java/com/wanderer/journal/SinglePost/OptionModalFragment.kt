@@ -22,14 +22,14 @@ class OptionModalFragment: BottomSheetDialogFragment() {
         view.delete_text.setOnClickListener {
             optionModalListener.onOptionClick("delete")
         }
-        view.edit_text.setOnClickListener {
-            optionModalListener.onOptionClick("edit")
+        view.share_text.setOnClickListener {
+            optionModalListener.onOptionClick("share")
         }
         view.map_text.setOnClickListener {
             optionModalListener.onOptionClick("map")
             dismiss()
         }
-        view.galley_text.setOnClickListener {
+        view.gallery_text.setOnClickListener {
             optionModalListener.onOptionClick("gallery")
         }
 

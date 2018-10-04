@@ -74,7 +74,6 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             showBottomSheet()
             true
         }
-
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -97,8 +96,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         }
     }
 
-    //DELETE DIALOG
-
+    //Delete Dialog
     override fun onDeletePositiveClick(dialog: DialogFragment) {
         Log.d("DeleteDial", "positive")
         val postDB = PostDB.get(this)
@@ -129,29 +127,32 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
     }
 
+    //Display bottom option modal
     private fun showBottomSheet() {
         val fm = this.supportFragmentManager
         optionModalFragment.show(fm, "option")
         Log.d("DeleteDial", "showBottomSheet")
     }
 
+    //Change app theme accordingly to user settings
     private fun changeTheme() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        //Change app theme accordingly to user settings
+
         when (sp.getString(getString(R.string.prefs_key_app_theme), "LIGHT")) {
             "LIGHT" -> setTheme(R.style.AppTheme_PastelLight_NoActionBar)
             "DARK" -> setTheme(R.style.AppTheme_PastelDark_NoActionBar)
         }
     }
 
+    //Bottom modal click handler
     override fun onOptionClick(id: String) {
         when(id){
             "delete" -> {
                 val fm = this.fragmentManager
                 newDel.show(fm, "Delete")
             }
-            "edit" -> {
-
+            "share" -> {
+                Toast.makeText(this, "Share is under development at the moment", Toast.LENGTH_SHORT).show()
             }
             "map" -> {
                 Toast.makeText(this, "map clicked", Toast.LENGTH_SHORT).show()
@@ -179,6 +180,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
     }
 
+    //Edit button
     private fun onEdit(){
         Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, EditPostActivity::class.java)
