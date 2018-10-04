@@ -28,25 +28,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
-            android:id="@+id/edit_text"
+            android:id="@+id/share_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_column="0"
             android:layout_columnWeight="1"
+            android:layout_row="0"
             android:background="?attr/selectableItemBackground"
-            android:drawableTop="@drawable/edit"
             android:drawablePadding="8dp"
-            android:text="@string/modal_edit_text"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/delete_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:background="?attr/selectableItemBackground"
-            android:drawableTop="@drawable/delete"
-            android:drawablePadding="8dp"
-            android:text="@string/modal_delete_text"
+            android:drawableTop="@drawable/share"
+            android:text="@string/modal_share_text"
             android:textAlignment="center" />
 
         <TextView
@@ -61,7 +52,7 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/galley_text"
+            android:id="@+id/gallery_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -69,6 +60,17 @@
             android:drawableTop="@drawable/gallery"
             android:drawablePadding="8dp"
             android:text="@string/modal_gallery_text"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/delete_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="8dp"
+            android:drawableTop="@drawable/delete"
+            android:text="@string/modal_delete_text"
             android:textAlignment="center" />
     </GridLayout>
 

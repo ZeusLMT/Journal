@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -52,7 +53,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         fab_edit.setOnClickListener {
-            //showBottomSheet()
+            onEdit()
         }
 
         val mapFragment = supportFragmentManager
@@ -150,10 +151,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
                 newDel.show(fm, "Delete")
             }
             "edit" -> {
-                Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, EditPostActivity::class.java)
-                intent.putExtra("timestamp", timestamp)
-                startActivity(intent)
+
             }
             "map" -> {
                 Toast.makeText(this, "map clicked", Toast.LENGTH_SHORT).show()
@@ -179,5 +177,12 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         val location = LatLng(myPost.location.latitude.toDouble(), myPost.location.longitude.toDouble())
         mMap.addMarker(MarkerOptions().position(location).title("Image location").icon(BitmapDescriptorFactory.fromResource(R.drawable.place_marker)))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+    }
+
+    private fun onEdit(){
+        Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, EditPostActivity::class.java)
+        intent.putExtra("timestamp", timestamp)
+        startActivity(intent)
     }
 }
