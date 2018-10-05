@@ -6,10 +6,10 @@ import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.wanderer.journal.DataStorage.Post
-import com.wanderer.journal.Settings.SettingsActivity
-import com.wanderer.journal.SinglePost.SinglePostActivity
-import com.wanderer.journal.Timeline.TimelineFragment
+import com.wanderer.journal.dataStorage.Post
+import com.wanderer.journal.settings.SettingsActivity
+import com.wanderer.journal.singlePost.SinglePostActivity
+import com.wanderer.journal.timeline.TimelineFragment
 
 class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener {
     companion object {

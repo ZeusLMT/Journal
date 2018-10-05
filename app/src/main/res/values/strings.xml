@@ -34,7 +34,7 @@
     <string name="img_desc">image</string>
     <string name="action_menu">options</string>
 
-    <!--Settings Activity-->
+    <!--settings Activity-->
     <string name="settings_title">Settings</string>
 
     <!--Shared Preferences-->

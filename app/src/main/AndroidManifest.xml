@@ -37,11 +37,11 @@
         </provider>
 
         <activity
-            android:name=".Settings.SettingsActivity"
+            android:name=".settings.SettingsActivity"
             android:label="@string/settings_title" />
 
         <activity
-            android:name=".SplashScreen.SplashActivity"
+            android:name=".splashScreen.SplashActivity"
             android:theme="@style/AppTheme.PastelLight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +51,7 @@
         </activity>
 
         <activity
-            android:name=".SinglePost.SinglePostActivity"
+            android:name=".singlePost.SinglePostActivity"
             android:label="@string/title_activity_single_post"
             android:theme="@style/AppTheme.PastelLight.NoActionBar">
             <intent-filter>
@@ -67,7 +67,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".EditPost.EditPostActivity"></activity>
+        <activity android:name=".editPost.EditPostActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

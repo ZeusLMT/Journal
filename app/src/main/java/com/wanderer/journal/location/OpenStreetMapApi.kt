@@ -1,4 +1,4 @@
-package com.wanderer.journal.Location
+package com.wanderer.journal.location
 
 import retrofit2.Call
 import retrofit2.Retrofit

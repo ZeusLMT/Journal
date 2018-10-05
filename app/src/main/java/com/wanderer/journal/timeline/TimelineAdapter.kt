@@ -1,4 +1,4 @@
-package com.wanderer.journal.Timeline
+package com.wanderer.journal.timeline
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.wanderer.journal.DataStorage.Post
+import com.wanderer.journal.dataStorage.Post
 import com.wanderer.journal.R
 
 class TimelineAdapter (private val appContext: Context, val clickListener: (Post) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {

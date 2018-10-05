@@ -35,7 +35,7 @@
     <string name="img_desc">hình ảnh</string>
     <string name="action_menu">lựa chọn</string>
 
-    <!--Settings Activity-->
+    <!--settings Activity-->
     <string name="settings_title">Cài đặt</string>
 
     <!--Shared Preferences-->
@@ -120,4 +120,9 @@
         "interact, and exist in space and in relation to each other. Realistic lighting shows "
         "seams, divides space, and indicates moving parts."
     </string>
+    <string name="prefs_title_app_theme">Chủ đề</string>
+    <string name="prefs_dialog_title_app_theme">Chọn chủ đề</string>
+    <string name="prefs_title_username">Đổi tên người dùng</string>
+    <string name="prefs_username_default">Người dùng</string>
+    <string name="prefs_title_passcode">Mật khẩu</string>
 </resources>

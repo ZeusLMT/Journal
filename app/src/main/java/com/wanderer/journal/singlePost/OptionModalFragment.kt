@@ -1,4 +1,4 @@
-package com.wanderer.journal.SinglePost
+package com.wanderer.journal.singlePost
 
 import android.content.Context
 import android.os.Bundle

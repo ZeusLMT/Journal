@@ -1,4 +1,4 @@
-package com.wanderer.journal.Location
+package com.wanderer.journal.location
 
 import android.app.Activity
 import android.content.Context

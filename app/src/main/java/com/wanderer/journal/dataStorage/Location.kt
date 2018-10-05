@@ -1,4 +1,4 @@
-package com.wanderer.journal.DataStorage
+package com.wanderer.journal.dataStorage
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.ForeignKey

@@ -1,4 +1,4 @@
-package com.wanderer.journal.EditPost
+package com.wanderer.journal.editPost
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -10,9 +10,9 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import com.wanderer.journal.DataStorage.Location
-import com.wanderer.journal.DataStorage.Post
-import com.wanderer.journal.DataStorage.PostDB
+import com.wanderer.journal.dataStorage.Location
+import com.wanderer.journal.dataStorage.Post
+import com.wanderer.journal.dataStorage.PostDB
 import com.wanderer.journal.MainActivity
 import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.activity_edit_post.*
@@ -32,7 +32,7 @@ class EditPostActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_edit_post)
 
         time = intent.getStringExtra("timestamp")
-        Log.d("EditPost", time)
+        Log.d("editPost", time)
         onGetPost(time)
         edit_save_button.setOnClickListener(this)
         edit_cancel_button.setOnClickListener(this)

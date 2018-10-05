@@ -1,4 +1,4 @@
-package com.wanderer.journal.SinglePost
+package com.wanderer.journal.singlePost
 
 import android.app.DialogFragment
 import android.arch.lifecycle.ViewModelProviders
@@ -23,10 +23,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.wanderer.journal.DataStorage.Post
-import com.wanderer.journal.DataStorage.PostDB
-import com.wanderer.journal.DataStorage.PostModel
-import com.wanderer.journal.EditPost.EditPostActivity
+import com.wanderer.journal.dataStorage.Post
+import com.wanderer.journal.dataStorage.PostDB
+import com.wanderer.journal.dataStorage.PostModel
+import com.wanderer.journal.editPost.EditPostActivity
 import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.activity_single_post.*
 import kotlinx.android.synthetic.main.content_single_post.*

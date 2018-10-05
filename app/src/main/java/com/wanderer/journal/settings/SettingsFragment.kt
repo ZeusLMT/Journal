@@ -1,4 +1,4 @@
-package com.wanderer.journal.Settings
+package com.wanderer.journal.settings
 
 import android.os.Bundle
 import android.preference.EditTextPreference

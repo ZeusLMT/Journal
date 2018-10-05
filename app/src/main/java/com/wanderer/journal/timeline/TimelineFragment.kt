@@ -1,4 +1,4 @@
-package com.wanderer.journal.Timeline
+package com.wanderer.journal.timeline
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -14,8 +14,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.wanderer.journal.DataStorage.Post
-import com.wanderer.journal.DataStorage.PostModel
+import com.wanderer.journal.dataStorage.Post
+import com.wanderer.journal.dataStorage.PostModel
 import com.wanderer.journal.PostActivity
 import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.fragment_timeline.*

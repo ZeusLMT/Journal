@@ -1,4 +1,4 @@
-package com.wanderer.journal.Settings
+package com.wanderer.journal.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle

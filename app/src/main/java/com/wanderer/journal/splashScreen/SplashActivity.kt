@@ -1,4 +1,4 @@
-package com.wanderer.journal.SplashScreen
+package com.wanderer.journal.splashScreen
 
 import android.content.Intent
 import android.content.SharedPreferences

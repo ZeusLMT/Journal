@@ -14,10 +14,10 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.wanderer.journal.DataStorage.Location
-import com.wanderer.journal.DataStorage.Post
-import com.wanderer.journal.DataStorage.PostDB
-import com.wanderer.journal.Location.LocationUpdate
+import com.wanderer.journal.dataStorage.Location
+import com.wanderer.journal.dataStorage.Post
+import com.wanderer.journal.dataStorage.PostDB
+import com.wanderer.journal.location.LocationUpdate
 import kotlinx.android.synthetic.main.activity_post.*
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
