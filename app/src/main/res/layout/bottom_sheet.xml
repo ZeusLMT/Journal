@@ -46,8 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:background="?attr/selectableItemBackground"
-            android:drawableTop="@drawable/map"
             android:drawablePadding="8dp"
+            android:drawableTop="@drawable/chromeweb"
             android:text="@string/modal_wiki_text"
             android:textAlignment="center" />
 

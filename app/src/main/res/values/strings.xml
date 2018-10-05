@@ -101,7 +101,7 @@
     <string name="modal_share_text">Share</string>
     <string name="modal_delete_text">Delete</string>
     <string name="modal_gallery_text">Open in gallery</string>
-    <string name="modal_wiki_text">Wiki search</string>
+    <string name="modal_wiki_text">Web search</string>
 
     <!--Other-->
     <string name="title_activity_single_post">SinglePostActivity</string>
