@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/textView_welcome"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -39,6 +39,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/user_welcome"
+        android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Material.Display1"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textStyle="bold"
