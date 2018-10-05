@@ -5,23 +5,23 @@
         android:title="@string/category_general">
         <ListPreference
             android:defaultValue="LIGHT"
-            android:dialogTitle="Select theme"
+            android:dialogTitle="@string/prefs_dialog_title_app_theme"
             android:entries="@array/Theme_names"
             android:entryValues="@array/Theme_values"
             android:key="@string/prefs_key_app_theme"
             android:summary="%s"
-            android:title="App theme" />
+            android:title="@string/prefs_title_app_theme" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/category_user"
         android:key="@string/prefs_key_category_user">
 
         <EditTextPreference
-            android:defaultValue="username"
+            android:defaultValue="@string/prefs_username_default"
             android:key="@string/prefs_key_username"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Change username" />
+            android:title="@string/prefs_title_username" />
         <EditTextPreference
             android:defaultValue="0000"
             android:inputType="numberPassword"
@@ -29,26 +29,26 @@
             android:maxLength="4"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Change passcode" />
+            android:title="@string/prefs_title_passcode" />
     </PreferenceCategory>
     <PreferenceCategory
         android:key="@string/prefs_key_category_timeline"
         android:title="@string/category_timeline">
         <ListPreference
-            android:key="@string/prefs_key_view_mode"
-            android:title="View mode"
-            android:dialogTitle="Select view mode"
+            android:defaultValue="LIST"
+            android:dialogTitle="@string/prefs_dialog_title_view_mode"
             android:entries="@array/ViewMode_names"
             android:entryValues="@array/ViewMode_values"
-            android:defaultValue="LIST"
-            android:summary="%s" />
+            android:key="@string/prefs_key_view_mode"
+            android:summary="%s"
+            android:title="@string/prefs_title_view_mode" />
         <ListPreference
-            android:key="@string/prefs_key_grid_span"
-            android:title="Grid view: Images per row"
-            android:dialogTitle="Select image(s) per row"
+            android:defaultValue="2"
+            android:dialogTitle="@string/prefs_dialog_title_grid_span"
             android:entries="@array/GridSpan_names"
             android:entryValues="@array/GridSpan_values"
-            android:defaultValue="2"
-            android:summary="%s" />
+            android:key="@string/prefs_key_grid_span"
+            android:summary="%s"
+            android:title="@string/prefs_title_grid_span" />
     </PreferenceCategory>
 </PreferenceScreen>

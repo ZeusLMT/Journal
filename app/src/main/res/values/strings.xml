@@ -42,6 +42,8 @@
     <string name="category_timeline">Timeline display</string>
 
     <string name="prefs_key_view_mode">prefs_ViewMode</string>
+    <string name="prefs_title_view_mode">View mode</string>
+    <string name="prefs_dialog_title_view_mode">Select view mode</string>
     <string-array name="ViewMode_names">
         <item>Timeline View</item>
         <item>Grid View</item>
@@ -52,6 +54,8 @@
     </string-array>
 
     <string name="prefs_key_grid_span">prefs_GridSpan</string>
+    <string name="prefs_title_grid_span">Grid view: Images per row</string>
+    <string name="prefs_dialog_title_grid_span">Select image(s) per row</string>
     <string-array name="GridSpan_names">
         <item>1</item>
         <item>2</item>
@@ -70,6 +74,8 @@
     <string name="category_general">General</string>
 
     <string name="prefs_key_app_theme">prefs_Theme</string>
+    <string name="prefs_title_app_theme">App theme</string>
+    <string name="prefs_dialog_title_app_theme">Select theme</string>
     <string-array name="Theme_names">
         <item>Light mode</item>
         <item>Dark mode</item>
@@ -84,8 +90,13 @@
 
     <string name="prefs_key_category_user">prefs_cat_user</string>
     <string name="category_user">User settings</string>
+
     <string name="prefs_key_username">prefs_Username</string>
+    <string name="prefs_title_username">Change username</string>
+    <string name="prefs_username_default">User</string>
+
     <string name="prefs_key_passcode">prefs_Passcode</string>
+    <string name="prefs_title_passcode">Change passcode</string>
 
     <!--Errors-->
     <string name="location_error">Location error</string>
