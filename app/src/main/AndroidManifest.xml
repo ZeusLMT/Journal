@@ -39,6 +39,7 @@
         <activity
             android:name=".Settings.SettingsActivity"
             android:label="@string/settings_title" />
+
         <activity
             android:name=".SplashScreen.SplashActivity"
             android:theme="@style/AppTheme.PastelLight.NoActionBar">
@@ -48,11 +49,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SinglePost.SinglePostActivity"
             android:label="@string/title_activity_single_post"
-            android:theme="@style/AppTheme.PastelLight.NoActionBar" />
+            android:theme="@style/AppTheme.PastelLight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <!-- Include the host attribute if you want your app to respond
+                     only to URLs with your app's domain. -->
+                <data android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/wiki"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- The BROWSABLE category is required to get links from web pages. -->
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".EditPost.EditPostActivity"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

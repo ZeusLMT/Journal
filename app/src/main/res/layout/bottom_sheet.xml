@@ -41,14 +41,14 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/map_text"
+            android:id="@+id/wiki_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:background="?attr/selectableItemBackground"
             android:drawableTop="@drawable/map"
             android:drawablePadding="8dp"
-            android:text="@string/modal_map_text"
+            android:text="@string/modal_wiki_text"
             android:textAlignment="center" />
 
         <TextView

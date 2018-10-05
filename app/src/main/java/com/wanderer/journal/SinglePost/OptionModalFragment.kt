@@ -25,8 +25,8 @@ class OptionModalFragment: BottomSheetDialogFragment() {
         view.share_text.setOnClickListener {
             optionModalListener.onOptionClick("share")
         }
-        view.map_text.setOnClickListener {
-            optionModalListener.onOptionClick("map")
+        view.wiki_text.setOnClickListener {
+            optionModalListener.onOptionClick("wiki")
             dismiss()
         }
         view.gallery_text.setOnClickListener {

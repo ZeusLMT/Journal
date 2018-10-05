@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -14,7 +15,6 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -154,8 +154,9 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             "share" -> {
                 Toast.makeText(this, "Share is under development at the moment", Toast.LENGTH_SHORT).show()
             }
-            "map" -> {
+            "wiki" -> {
                 Toast.makeText(this, "map clicked", Toast.LENGTH_SHORT).show()
+                openWiki(myPost.location.city)
             }
             "gallery" -> {
                 val imgFile = File(myPost.image)
@@ -186,5 +187,14 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         val intent = Intent(this, EditPostActivity::class.java)
         intent.putExtra("timestamp", timestamp)
         startActivity(intent)
+    }
+
+    //Search wikipedia for location
+    private fun openWiki(location: String){
+        val webpage: Uri = Uri.parse("https://en.wikipedia.org/wiki/$location")
+        val intent = Intent(Intent.ACTION_VIEW, webpage)
+        if(intent.resolveActivity(packageManager) != null){
+            startActivity(intent)
+        }
     }
 }
