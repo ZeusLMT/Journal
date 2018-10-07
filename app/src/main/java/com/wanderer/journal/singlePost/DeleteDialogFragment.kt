@@ -17,7 +17,7 @@ class DeleteDialogFragment: DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        Log.d("DelteDial", "not created")
+        Log.d("DeleteDial", "not created")
         return activity?.let {
             val builder = AlertDialog.Builder(it)
             builder.setMessage(R.string.delete_dialog_message)

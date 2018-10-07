@@ -83,7 +83,6 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
-        Log.d("wee", "wee")
         // Create an image file name
         //Using datetime to avoid collision
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
@@ -130,7 +129,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
                 if(isExternalStorageWritable()){
                     dispatchTakePictureIntent()
                 } else{
-                    Toast.makeText(this, "Storage space not available", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.memory_empty), Toast.LENGTH_SHORT).show()
                 }
             }
             R.id.cancel_button -> {
@@ -139,13 +138,17 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.save_button -> {
                 desc = description.text.toString()
-                if (curPicPath.isBlank() || time.isBlank()) Toast.makeText(this, "Image empty. Cannot save", Toast.LENGTH_SHORT).show()
-                else if (loc.trueLocationCity.isBlank()) Toast.makeText(this, "Cannot find location. Please try taking picture again", Toast.LENGTH_SHORT).show()
-                else if (desc.isBlank()) Toast.makeText(this, "Description empty. Please fill", Toast.LENGTH_SHORT).show()
+                if (curPicPath.isBlank() || time.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_image), Toast.LENGTH_SHORT).show()
+                else if (loc.trueLocationCity.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_location), Toast.LENGTH_SHORT).show()
+                else if (desc.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_desc), Toast.LENGTH_SHORT).show()
                 else {
                     doAsync {
 
-                        val newLocation = Location(0, time, loc.latLocation.toString(), loc.lonLocation.toString(), loc.trueLocationNeighbourhood, loc.trueLocationCity, loc.trueLocationCountry)
+                        val newLocation = Location(0, time, loc.latLocation.toString(),
+                                loc.lonLocation.toString(),
+                                loc.trueLocationNeighbourhood,
+                                loc.trueLocationCity,
+                                loc.trueLocationCountry)
                         val newPost = Post(time, curPicPath, desc, newLocation)
                         postDB.postDao().insert(newPost)
                         UI{

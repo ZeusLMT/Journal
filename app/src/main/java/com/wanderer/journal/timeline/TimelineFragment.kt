@@ -39,12 +39,12 @@ class TimelineFragment: Fragment() {
         sp = PreferenceManager.getDefaultSharedPreferences(context)
         postModelProvider = ViewModelProviders.of(activity!!).get(PostModel::class.java)
         adapter = TimelineAdapter(context!!){item: Post -> onItemClick(item)}
-        Log.d("abc", "Timeline onCreate")
+        Log.d("TimelineFrag", "Timeline onCreate")
 
         setUpRecyclerView()
 
         postModelProvider.getAllPosts().observe(this, Observer {
-            Log.d("abc", it.toString())
+            Log.d("TimelineGetAllPost", it.toString())
             adapter.setData(it!!.sorted())
         })
 

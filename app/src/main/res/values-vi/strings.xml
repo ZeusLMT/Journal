@@ -20,6 +20,7 @@
 
     <!--Post Activity-->
     <string name="post_title">Khoảnh khắc mới</string>
+    <string name="edit_title">Chỉnh sửa khoảnh khắc</string>
     <string name="post_image_desc">Ảnh được chụp</string>
     <string name="cancel_desc">Nút hủy</string>
     <string name="save_desc">Nút lưu</string>
@@ -38,10 +39,13 @@
     <!--settings Activity-->
     <string name="settings_title">Cài đặt</string>
 
+
     <!--Shared Preferences-->
     <string name="prefs_key_category_timeline">prefs_cat_timeline</string>
     <string name="category_timeline">Hiển thị dòng thời gian</string>
 
+    <string name="prefs_title_view_mode">Phương thức hiển thị</string>
+    <string name="prefs_dialog_title_view_mode">Chọn phương thức hiển </string>
     <string name="prefs_key_view_mode">prefs_ViewMode</string>
     <string-array name="ViewMode_names">
         <item>Dòng thời gian</item>
@@ -53,6 +57,8 @@
     </string-array>
 
     <string name="prefs_key_grid_span">prefs_GridSpan</string>
+    <string name="prefs_title_grid_span">Số ảnh từng hàng</string>
+    <string name="prefs_dialog_title_grid_span">Chọn số ảnh từng hàng</string>
     <string-array name="GridSpan_names">
         <item>1</item>
         <item>2</item>
@@ -103,6 +109,19 @@
     <string name="modal_delete_text">Xóa</string>
     <string name="modal_gallery_text">Mở thư viện</string>
     <string name="modal_wiki_text">Tìm wikipedia</string>
+
+    <!--Messages and errors-->
+    <string name="toast_empty_desc">Nội dung trống. Cần được viết trước khi lưu</string>
+    <string name="snackbar_deleted_entry">Trang đã được xóa</string>
+    <string name="toast_share">"Chia sẻ" đang trong quá trình hoàn thiện</string>
+    <string name="toast_error_gallery">Lỗi mở thư viện ảnh</string>
+    <string name="username_error">Nhập tên người dùng</string>
+    <string name="password_error">Nhập mật khẩu</string>
+    <string name="password_blank">Sử dụng mật khẩu để trở lại</string>
+    <string name="password_wrong">Sai mật khẩu, thử lại!</string>
+    <string name="memory_empty">Bộ nhớ rỗng hoặc không tồn tại</string>
+    <string name="toast_empty_image">Hình ảnh trống. Hãy thử lại</string>
+    <string name="toast_empty_location">Không thể tìm thấy vị trí, hãy thử lại!</string>
 
     <!--Other-->
     <string name="title_activity_single_post">SinglePostActivity</string>

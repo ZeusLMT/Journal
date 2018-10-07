@@ -52,6 +52,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        //Edit floating button
         fab_edit.setOnClickListener {
             onEdit()
         }
@@ -77,6 +78,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         else -> super.onOptionsItemSelected(item)
     }
 
+    //Get and display single post
     inner class GetData : AsyncTask<String, Unit, Post>() {
         override fun doInBackground(vararg params: String): Post {
             postModelProvider = ViewModelProviders.of(this@SinglePostActivity).get(PostModel::class.java)
@@ -105,7 +107,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             postDB.postDao().deletePost(myPost)
             finish()
             UI {
-                Snackbar.make(view, "Journal entry deleted", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, getString(R.string.snackbar_deleted_entry), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
             }
         }
@@ -152,10 +154,9 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
                 newDel.show(fm, "Delete")
             }
             "share" -> {
-                Toast.makeText(this, "Share is under development at the moment", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_share), Toast.LENGTH_SHORT).show()
             }
             "wiki" -> {
-                Toast.makeText(this, "map clicked", Toast.LENGTH_SHORT).show()
                 openWiki(myPost.location.city)
             }
             "gallery" -> {
@@ -166,13 +167,14 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
                     viewIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     viewIntent.data = imgUri
                     startActivity(viewIntent)
-                } else Toast.makeText(this, "Error opening app", Toast.LENGTH_SHORT).show()
+                } else Toast.makeText(this, getString(R.string.toast_error_gallery), Toast.LENGTH_SHORT).show()
             }
         }
 
         optionModalFragment.dismiss()
     }
 
+    //Set up map view
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -183,7 +185,6 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
 
     //Edit button
     private fun onEdit(){
-        Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, EditPostActivity::class.java)
         intent.putExtra("timestamp", timestamp)
         startActivity(intent)

@@ -66,7 +66,7 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                 }
 
                 if(position >= 1 && comparePost(thisPost, dataset[position-1])) {
-                    Log.d("abc", "GONE")
+                    Log.d("onBindViewHolder", "GONE")
                     holder.timestampTextView.visibility = View.GONE
                     holder.dividerTop.visibility = View.GONE
                 }
@@ -120,7 +120,7 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
             val photoH: Int = outHeight
             val ratio = photoW.toFloat() / photoH.toFloat()
             val targetH = (targetW / ratio).toInt()
-            Log.d("abcd", "$photoW, $photoH, $ratio, $targetW, $targetH")
+            Log.d("scaledImageInfo", "$photoW, $photoH, $ratio, $targetW, $targetH")
 
             // Determine how much to scale down the image
             val scaleFactor: Int = Math.min(photoW / targetW, photoH / targetH)

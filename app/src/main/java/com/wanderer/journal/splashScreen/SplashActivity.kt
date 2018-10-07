@@ -58,8 +58,8 @@ class SplashActivity : AppCompatActivity() {
         imageButton_next_user.setOnClickListener {
             if (editText_username.text.isBlank() || editText_passcode_user.text.isBlank()) {
                 //Toast.makeText(this, "Username & passcode should not be empty", Toast.LENGTH_SHORT).show()
-                if (editText_username.text.isBlank()) username_user.error = "Please enter your username"
-                if (editText_passcode_user.text.isBlank()) passcode_user.error = "Please enter your passcode"
+                if (editText_username.text.isBlank()) username_user.error = getString(R.string.username_error)
+                if (editText_passcode_user.text.isBlank()) passcode_user.error = getString(R.string.password_error)
             } else {
                 val username = editText_username.text.toString().replace(" ", "")
                 val passcode = editText_passcode_user.text.toString()
@@ -127,8 +127,8 @@ class SplashActivity : AppCompatActivity() {
 
         when {
             editText_passcode_login.text.toString() == userPasscode -> startTimeline()
-            editText_passcode_login.text.isBlank() -> passcode_login.error = "Use your passcode to get back"
-            else -> passcode_login.error = "Wrong passcode, try again!"
+            editText_passcode_login.text.isBlank() -> passcode_login.error = getString(R.string.password_blank)
+            else -> passcode_login.error = getString(R.string.password_wrong)
         }
     }
 

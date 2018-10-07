@@ -19,6 +19,7 @@
 
     <!--Post Activity-->
     <string name="post_title">New moment</string>
+    <string name="edit_title">Edit moment</string>
     <string name="post_image_desc">Captured image</string>
     <string name="cancel_desc">Cancel button</string>
     <string name="save_desc">Save button</string>
@@ -113,6 +114,19 @@
     <string name="modal_delete_text">Delete</string>
     <string name="modal_gallery_text">Open in gallery</string>
     <string name="modal_wiki_text">Web search</string>
+
+    <!--Messages and errors-->
+    <string name="toast_empty_desc">Description empty. Please fill!</string>
+    <string name="snackbar_deleted_entry">Journal entry deleted</string>
+    <string name="toast_share">Share is under development at the moment</string>
+    <string name="toast_error_gallery">Error opening app</string>
+    <string name="username_error">Please enter your username</string>
+    <string name="password_error">Please enter your password</string>
+    <string name="password_blank">Use your password to get back</string>
+    <string name="password_wrong">Wrong password, try again!</string>
+    <string name="memory_empty">Storage space not available</string>
+    <string name="toast_empty_image">Image empty. Cannot save</string>
+    <string name="toast_empty_location">Cannot find location. Please try taking picture again</string>
 
     <!--Other-->
     <string name="title_activity_single_post">SinglePostActivity</string>

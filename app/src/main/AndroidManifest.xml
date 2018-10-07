@@ -67,7 +67,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".editPost.EditPostActivity"></activity>
+        <activity
+            android:name=".editPost.EditPostActivity"
+            android:label="@string/edit_title"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -51,9 +51,9 @@ class EditPostActivity : AppCompatActivity(), View.OnClickListener {
         when(p0?.id){
             R.id.edit_save_button -> {
                 if(edit_description.text.toString().isBlank()){
-                    Toast.makeText(this, "Empty description", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.toast_empty_desc), Toast.LENGTH_SHORT).show()
                 }else{
-                    Log.d("OnClick", edit_description.text.toString())
+                    Log.d("editSaveOnClick", edit_description.text.toString())
                     val updatedPost = Post(time, imgPath, edit_description.text.toString(), location!!)
                     doAsync {
                         postDB.postDao().update(updatedPost)
