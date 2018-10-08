@@ -91,6 +91,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             header_img.setImageBitmap(imgBitmap)
             textView_description.text = result.description
             textView_date.text = result.time
+            Log.d("Weather", result.weather)
 
             val locationDisplay = result.location.toString()
             textView_location.text = locationDisplay
@@ -179,7 +180,9 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         mMap = googleMap
 
         val location = LatLng(myPost.location.latitude.toDouble(), myPost.location.longitude.toDouble())
-        mMap.addMarker(MarkerOptions().position(location).title("Image location").icon(BitmapDescriptorFactory.fromResource(R.drawable.place_marker)))
+        mMap.addMarker(MarkerOptions().position(location)
+                .title("Image location")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.place_marker)))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
     }
 

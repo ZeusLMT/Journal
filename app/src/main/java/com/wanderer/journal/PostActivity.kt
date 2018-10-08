@@ -34,6 +34,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
     private var previousPicPath: String = ""
     private var time: String = ""
     private var desc: String = ""
+    private var weather: String = ""
     private val postDB = PostDB.get(this)
     private val loc = LocationUpdate()
 
@@ -138,6 +139,8 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.save_button -> {
                 desc = description.text.toString()
+                val degree = "\u00b0"
+                weather = "${loc.weatherTemperature}${degree}C - ${loc.weatherDescription}"
                 if (curPicPath.isBlank() || time.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_image), Toast.LENGTH_SHORT).show()
                 else if (loc.trueLocationCity.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_location), Toast.LENGTH_SHORT).show()
                 else if (desc.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_desc), Toast.LENGTH_SHORT).show()
@@ -149,7 +152,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
                                 loc.trueLocationNeighbourhood,
                                 loc.trueLocationCity,
                                 loc.trueLocationCountry)
-                        val newPost = Post(time, curPicPath, desc, newLocation)
+                        val newPost = Post(time, curPicPath, desc, weather, newLocation)
                         postDB.postDao().insert(newPost)
                         UI{
                             finish()

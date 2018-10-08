@@ -61,9 +61,9 @@ class TimelineMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun updateMap(posts: List<Post>?) {
-        Log.d("abc", posts.toString())
+        Log.d("updateMap", posts.toString())
         if (posts != null) {
-            Log.d("abc", "update map")
+            Log.d("updateMap", "update map")
             timelineMap.clear()
             val builder = LatLngBounds.Builder()
             for (post in posts) {
