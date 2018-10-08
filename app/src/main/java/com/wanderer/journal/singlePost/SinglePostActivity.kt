@@ -198,4 +198,6 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             startActivity(intent)
         }
     }
+
+    //
 }

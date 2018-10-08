@@ -16,7 +16,7 @@ object OpenStreetMapApi {
 
     interface LocationService{
         @GET("reverse?format=json&zoom=20&addressdetails=1")
-        fun getReverseGeocode(@Query("lat") lat: String,
+        fun getReverseGeocode(@Query("lat")lat: String,
                               @Query("lon")long: String): Call<Model.Result>
     }
 
