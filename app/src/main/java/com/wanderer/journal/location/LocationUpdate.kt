@@ -52,7 +52,11 @@ class LocationUpdate {
                     val address= response.body()!!.address
                     trueLocationCity = address.city
                     trueLocationCountry = address.country
-                    trueLocationNeighbourhood =address.neighbourhood
+                    trueLocationNeighbourhood = if (address.neighbourhood != null) {
+                        address.neighbourhood!!
+                    } else {
+                        address.suburb
+                    }
                 } else Log.d("LocationReverseGeocode", "null")
             }
 

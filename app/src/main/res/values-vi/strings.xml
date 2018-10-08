@@ -17,6 +17,7 @@
     <string name="main_title">Dòng thời gian</string>
     <string name="action_settings">Cài đặt</string>
     <string name="general_img_desc">Ảnh được chụp tại %1$s</string>
+    <string name="empty_display_text">Journal của bạn hiện đang trống. Bắt đầu thêm bằng nút dưới đây</string>
 
     <!--Post Activity-->
     <string name="post_title">Khoảnh khắc mới</string>
@@ -39,24 +40,16 @@
     <!--settings Activity-->
     <string name="settings_title">Cài đặt</string>
 
-
     <!--Shared Preferences-->
-    <string name="prefs_key_category_timeline">prefs_cat_timeline</string>
     <string name="category_timeline">Hiển thị dòng thời gian</string>
-
     <string name="prefs_title_view_mode">Phương thức hiển thị</string>
     <string name="prefs_dialog_title_view_mode">Chọn phương thức hiển </string>
-    <string name="prefs_key_view_mode">prefs_ViewMode</string>
     <string-array name="ViewMode_names">
         <item>Dòng thời gian</item>
         <item>Lưới</item>
-    </string-array>
-    <string-array name="ViewMode_values">
-        <item>LIST</item>
-        <item>GRID</item>
+        <item>Bản đồ</item>
     </string-array>
 
-    <string name="prefs_key_grid_span">prefs_GridSpan</string>
     <string name="prefs_title_grid_span">Số ảnh từng hàng</string>
     <string name="prefs_dialog_title_grid_span">Chọn số ảnh từng hàng</string>
     <string-array name="GridSpan_names">
@@ -65,34 +58,20 @@
         <item>3</item>
         <item>4</item>
     </string-array>
-    <string-array name="GridSpan_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
 
-
-    <string name="prefs_key_category_general">prefs_cat_general</string>
     <string name="category_general">Thiết lập chung</string>
-
-    <string name="prefs_key_app_theme">prefs_Theme</string>
+    <string name="prefs_title_app_theme">Chủ đề</string>
+    <string name="prefs_dialog_title_app_theme">Chọn chủ đề</string>
     <string-array name="Theme_names">
         <item>Sáng</item>
         <item>Tối</item>
     </string-array>
-    <string-array name="Theme_values">
-        <item>LIGHT</item>
-        <item>DARK</item>
-    </string-array>
 
-
-    <string name="prefs_key_first_visit">prefs_FirstVisit</string>
-
-    <string name="prefs_key_category_user">prefs_cat_user</string>
     <string name="category_user">Thiết lập người dùng</string>
-    <string name="prefs_key_username">prefs_Username</string>
-    <string name="prefs_key_passcode">prefs_Passcode</string>
+    <string name="prefs_title_username">Đổi tên người dùng</string>
+    <string name="prefs_username_default">Người dùng</string>
+
+    <string name="prefs_title_passcode">Mật khẩu</string>
 
     <!--Errors-->
     <string name="location_error">Lỗi vị trí</string>
@@ -139,9 +118,5 @@
         "interact, and exist in space and in relation to each other. Realistic lighting shows "
         "seams, divides space, and indicates moving parts."
     </string>
-    <string name="prefs_title_app_theme">Chủ đề</string>
-    <string name="prefs_dialog_title_app_theme">Chọn chủ đề</string>
-    <string name="prefs_title_username">Đổi tên người dùng</string>
-    <string name="prefs_username_default">Người dùng</string>
-    <string name="prefs_title_passcode">Mật khẩu</string>
+
 </resources>

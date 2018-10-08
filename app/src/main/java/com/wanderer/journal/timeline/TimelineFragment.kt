@@ -3,7 +3,6 @@ package com.wanderer.journal.timeline
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -14,10 +13,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.wanderer.journal.R
 import com.wanderer.journal.dataStorage.Post
 import com.wanderer.journal.dataStorage.PostModel
-import com.wanderer.journal.PostActivity
-import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.fragment_timeline.*
 
 class TimelineFragment: Fragment() {
@@ -44,14 +42,13 @@ class TimelineFragment: Fragment() {
         setUpRecyclerView()
 
         postModelProvider.getAllPosts().observe(this, Observer {
-            Log.d("TimelineGetAllPost", it.toString())
-            adapter.setData(it!!.sorted())
+            if (it!!.isEmpty()) {
+                textView_empty.visibility = View.VISIBLE
+            } else {
+                textView_empty.visibility = View.GONE
+                adapter.setData(it!!.sorted())
+            }
         })
-
-        fab_add.setOnClickListener {
-            val intent = Intent(context, PostActivity::class.java).apply{}
-            startActivity(intent)
-        }
     }
 
     private fun onItemClick(item: Post) {
