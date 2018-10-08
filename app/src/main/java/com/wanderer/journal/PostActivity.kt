@@ -29,6 +29,7 @@ import java.util.*
 class PostActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         private const val REQUEST_IMAGE_CAPTURE = 1
+        private const val DEGREE = "\u00b0"
     }
     private var curPicPath: String = ""
     private var previousPicPath: String = ""
@@ -139,8 +140,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.save_button -> {
                 desc = description.text.toString()
-                val degree = "\u00b0"
-                weather = "${loc.weatherTemperature}${degree}C - ${loc.weatherDescription}"
+                weather = "${loc.weatherTemperature}${DEGREE}C - ${loc.weatherDescription}"
                 if (curPicPath.isBlank() || time.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_image), Toast.LENGTH_SHORT).show()
                 else if (loc.trueLocationCity.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_location), Toast.LENGTH_SHORT).show()
                 else if (desc.isBlank()) Toast.makeText(this, getString(R.string.toast_empty_desc), Toast.LENGTH_SHORT).show()
