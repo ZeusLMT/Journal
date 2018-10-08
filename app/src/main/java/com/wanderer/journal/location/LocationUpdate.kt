@@ -21,6 +21,10 @@ class LocationUpdate {
     var trueLocationCountry = ""
     var trueLocationNeighbourhood = ""
 
+    var weatherDescription = ""
+    var weatherTemperature = ""
+
+    //Get lat lon
     fun onUpdateLocation(context: Context, activity: Activity){
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
         if((ContextCompat.checkSelfPermission(context,
@@ -37,13 +41,12 @@ class LocationUpdate {
                 lonLocation = location.longitude
 
                 requestLocationService(location.latitude.toString(), location.longitude.toString())
-
             }
             else Log.d("GEOLOCATION", "NULL")
         }
     }
 
-
+    //Request reverse geocoding from lat lon
     private fun requestLocationService(lat: String, long: String){
         val call = OpenStreetMapApi.locationService.getReverseGeocode(lat, long)
         val value = object : Callback<OpenStreetMapApi.Model.Result>{
@@ -57,6 +60,7 @@ class LocationUpdate {
                     } else {
                         address.suburb
                     }
+                    requestWeatherService(address.city)
                 } else Log.d("LocationReverseGeocode", "null")
             }
 
@@ -64,6 +68,31 @@ class LocationUpdate {
                 Log.d("LocationFailure", t.toString())
             }
         }
+        call.enqueue(value)
+    }
+
+    //Request location weather info
+    private fun requestWeatherService(city: String){
+        Log.d("requestWeatherService", "in")
+        val call = WeatherApi.weatherService.getWeatherInfo(city)
+        val value = object : Callback<WeatherApi.Model.WeatherResult>{
+            override fun onResponse(call: Call<WeatherApi.Model.WeatherResult>?, response: Response<WeatherApi.Model.WeatherResult>?) {
+                if(response!= null){
+                    val weather = response.body()!!.weather
+                    val main = response.body()!!.main
+                    Log.d("WeatherDesc", weather[0].description)
+                    Log.d("WeatherTemp", main.temp)
+
+                    weatherDescription = weather[0].description
+                    weatherTemperature = main.temp
+                } else Log.d("WeatherGetWeather", "null")
+            }
+
+            override fun onFailure(call: Call<WeatherApi.Model.WeatherResult>?, t: Throwable?) {
+                Log.d("WeatherFailure", t.toString())
+            }
+        }
+
         call.enqueue(value)
     }
 }

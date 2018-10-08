@@ -133,6 +133,7 @@
 
     <!--Other-->
     <string name="title_activity_single_post">SinglePostActivity</string>
+    <string name="weather_api_key">e6c73a05c97ed9be65c1c563256fea42</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
