@@ -11,6 +11,7 @@ data class Post(
     val time: String,
     val image: String,
     val description: String,
+    val weather: String,
     @Embedded
     val location: Location): Comparable<Post> {
     override fun compareTo(other: Post): Int {
@@ -21,5 +22,5 @@ data class Post(
         return otherTime.compareTo(thisTime)
     }
 
-    override fun toString(): String = "$time $image $description $location"
+    override fun toString(): String = "$time $image $description $location $weather"
 }

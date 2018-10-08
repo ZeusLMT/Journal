@@ -50,7 +50,8 @@ class LocationUpdate {
     private fun requestLocationService(lat: String, long: String){
         val call = OpenStreetMapApi.locationService.getReverseGeocode(lat, long)
         val value = object : Callback<OpenStreetMapApi.Model.Result>{
-            override fun onResponse(call: Call<OpenStreetMapApi.Model.Result>?, response: Response<OpenStreetMapApi.Model.Result>?) {
+            override fun onResponse(call: Call<OpenStreetMapApi.Model.Result>?,
+                                    response: Response<OpenStreetMapApi.Model.Result>?) {
                 if(response!= null){
                     val address= response.body()!!.address
                     trueLocationCity = address.city
@@ -72,7 +73,8 @@ class LocationUpdate {
         Log.d("requestWeatherService", "in")
         val call = WeatherApi.weatherService.getWeatherInfo(city)
         val value = object : Callback<WeatherApi.Model.WeatherResult>{
-            override fun onResponse(call: Call<WeatherApi.Model.WeatherResult>?, response: Response<WeatherApi.Model.WeatherResult>?) {
+            override fun onResponse(call: Call<WeatherApi.Model.WeatherResult>?,
+                                    response: Response<WeatherApi.Model.WeatherResult>?) {
                 if(response!= null){
                     val weather = response.body()!!.weather
                     val main = response.body()!!.main

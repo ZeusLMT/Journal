@@ -23,6 +23,7 @@ class EditPostActivity : AppCompatActivity(), View.OnClickListener {
     private var imgPath =""
     private var time: String = ""
     private var desc: String = ""
+    private var weather: String = ""
     private var location: Location ?= null
     private val postDB = PostDB.get(this)
 
@@ -54,7 +55,7 @@ class EditPostActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this, getString(R.string.toast_empty_desc), Toast.LENGTH_SHORT).show()
                 }else{
                     Log.d("editSaveOnClick", edit_description.text.toString())
-                    val updatedPost = Post(time, imgPath, edit_description.text.toString(), location!!)
+                    val updatedPost = Post(time, imgPath, edit_description.text.toString(), weather, location!!)
                     doAsync {
                         postDB.postDao().update(updatedPost)
                         UI{
@@ -79,6 +80,7 @@ class EditPostActivity : AppCompatActivity(), View.OnClickListener {
                 desc = curPost.description
                 location = curPost.location
                 imgPath = curPost.image
+                weather = curPost.weather
                 Log.d("OnGetPost", imgPath)
 
                 edit_description.setText(desc, TextView.BufferType.EDITABLE)
