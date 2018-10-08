@@ -23,11 +23,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.wanderer.journal.R
 import com.wanderer.journal.dataStorage.Post
 import com.wanderer.journal.dataStorage.PostDB
 import com.wanderer.journal.dataStorage.PostModel
 import com.wanderer.journal.editPost.EditPostActivity
-import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.activity_single_post.*
 import kotlinx.android.synthetic.main.content_single_post.*
 import org.jetbrains.anko.UI
@@ -91,7 +91,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             header_img.setImageBitmap(imgBitmap)
             textView_description.text = result.description
             textView_date.text = result.time
-            Log.d("Weather", result.weather)
+            textView_weather.text = result.weather
 
             val locationDisplay = result.location.toString()
             textView_location.text = locationDisplay

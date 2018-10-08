@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.*
 import com.wanderer.journal.R
 import com.wanderer.journal.dataStorage.Post
 import com.wanderer.journal.dataStorage.PostModel
+import kotlinx.android.synthetic.main.fragment_timeline_map.*
 
 
 class TimelineMapFragment : Fragment(), OnMapReadyCallback {
@@ -40,11 +41,6 @@ class TimelineMapFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager
                 .findFragmentById(R.id.map_timeline) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-        val postModelProvider = ViewModelProviders.of(activity!!).get(PostModel::class.java)
-        postModelProvider.getAllPosts().observe(this, Observer {
-            updateMap(it)
-        })
     }
 
     override fun onAttach(context: Context) {
@@ -54,14 +50,21 @@ class TimelineMapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         timelineMap = googleMap
-        timelineMap.setOnMarkerClickListener {
-            activityCallBack!!.onMarkerClick(it.title)
-            return@setOnMarkerClickListener true
-        }
+
+        val postModelProvider = ViewModelProviders.of(activity!!).get(PostModel::class.java)
+        postModelProvider.getAllPosts().observe(this, Observer {
+            if (it!!.isEmpty()) {
+                FrameLayout_map_timeline.visibility = View.GONE
+                textView_empty_map.visibility = View.VISIBLE
+            } else {
+                FrameLayout_map_timeline.visibility = View.VISIBLE
+                textView_empty_map.visibility = View.GONE
+                updateMap(it)
+            }
+        })
     }
 
     private fun updateMap(posts: List<Post>?) {
-        Log.d("updateMap", posts.toString())
         if (posts != null) {
             Log.d("updateMap", "update map")
             timelineMap.clear()
@@ -73,10 +76,19 @@ class TimelineMapFragment : Fragment(), OnMapReadyCallback {
                         .title(post.time)
                         .icon(createIcon(post.image)))
                 builder.include(newMarker.position)
+                if (posts.size <= 1) {
+                    timelineMap.moveCamera(CameraUpdateFactory.newLatLng(newMarker.position))
+                }
             }
-            val bounds = builder.build()
-            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, dpToPx(40))
-            timelineMap.moveCamera(cameraUpdate)
+            if (posts.size > 1) {
+                val bounds = builder.build()
+                val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, dpToPx(40))
+                timelineMap.moveCamera(cameraUpdate)
+            }
+            timelineMap.setOnMarkerClickListener {
+                activityCallBack!!.onMarkerClick(it.title)
+                return@setOnMarkerClickListener true
+            }
         }
     }
 

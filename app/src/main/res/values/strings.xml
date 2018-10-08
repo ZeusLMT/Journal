@@ -30,6 +30,7 @@
     <string name="date">dd.mm.yyyy</string>
     <string name="location">location</string>
     <string name="description">description</string>
+    <string name="weather">Sunny</string>
     <string name="icon_des_date">calendar icon</string>
     <string name="icon_des_location">map marker icon</string>
     <string name="icon_des_quote">quote icon</string>

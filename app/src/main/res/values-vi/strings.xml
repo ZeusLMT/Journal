@@ -31,6 +31,7 @@
     <string name="date">dd.mm.yyyy</string>
     <string name="location">vị trí</string>
     <string name="description">cảm nghĩ</string>
+    <string name="weather">nắng</string>
     <string name="icon_des_date">biểu tượng ngày tháng</string>
     <string name="icon_des_location">biểu tượng bản đồ</string>
     <string name="icon_des_quote">biểu tượng trích dẫn</string>
