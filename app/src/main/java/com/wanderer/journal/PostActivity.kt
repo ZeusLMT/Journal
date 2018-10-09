@@ -59,7 +59,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
             loc.onUpdateLocation(this, this)
 
             //Set datetime for pic - unique
-            time = SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date())
+            time = SimpleDateFormat("dd MMM yyyy - HH:mm:ss").format(Date())
 
             //Preview image high resolution
             val imageBitmap = squareCropImg(BitmapFactory.decodeFile(curPicPath))

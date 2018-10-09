@@ -33,8 +33,8 @@ class SplashActivity : AppCompatActivity() {
         //Initialize Shared Preferences
         sp = PreferenceManager.getDefaultSharedPreferences(this)
         if (!sp.getBoolean(PreferenceManager.KEY_HAS_SET_DEFAULT_VALUES, false)) {
-            PreferenceManager.setDefaultValues(this, R.xml.prefs, false);
-            PreferenceManager.setDefaultValues(this, R.xml.other_prefs, true);
+            PreferenceManager.setDefaultValues(this, R.xml.prefs, false)
+            PreferenceManager.setDefaultValues(this, R.xml.other_prefs, true)
         }
 
         val handler = Handler()

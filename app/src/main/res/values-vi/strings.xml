@@ -28,7 +28,6 @@
     <string name="description_hint">Viết cảm nghĩ tại đây</string>
 
     <!--Single Post Activity-->
-    <string name="date">dd.mm.yyyy</string>
     <string name="location">vị trí</string>
     <string name="description">cảm nghĩ</string>
     <string name="weather">nắng</string>

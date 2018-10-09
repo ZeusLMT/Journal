@@ -11,8 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.wanderer.journal.dataStorage.Post
 import com.wanderer.journal.R
+import com.wanderer.journal.dataStorage.Post
 
 class TimelineAdapter (private val appContext: Context, val clickListener: (Post) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var dataset: List<Post> = emptyList()
@@ -22,7 +22,8 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                          val imageView: ImageView = itemView.findViewById(R.id.imageView_grid)) : RecyclerView.ViewHolder(itemView)
 
     class ListViewHolder (private val itemView: View,
-                          val timestampTextView: TextView = itemView.findViewById(R.id.timestamp),
+                          val timestampDate: TextView = itemView.findViewById(R.id.timestamp_date),
+                          val timestampMonthYear: TextView = itemView.findViewById(R.id.timestamp_month_year),
                           val imageView: ImageView = itemView.findViewById(R.id.imageView_list),
                           val dividerTop: View = itemView.findViewById(R.id.divider_top),
                           val dividerBottom: View = itemView.findViewById(R.id.divider_bottom)) : RecyclerView.ViewHolder(itemView)
@@ -52,14 +53,13 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val thisPost = dataset[position]
         val sp = PreferenceManager.getDefaultSharedPreferences(appContext)
-        //val imageBitmap = squareCropImg(BitmapFactory.decodeFile(thisPost.image))
 
         when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
             "LIST" -> {
-                //(holder as ListViewHolder).imageView.setImageBitmap(imageBitmap)
                 (holder as ListViewHolder).imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
-                holder.timestampTextView.text = thisPost.time.substringBefore(" ")
-                setScaledImage(holder.imageView, thisPost.image)
+                //holder.timestampDate.text = thisPost.time.substringBefore(" ")
+                setTimestamp(holder.timestampMonthYear, holder.timestampDate, thisPost.time)
+                holder.imageView.setImageBitmap(scaleImage(thisPost.image))
 
                 if (position == 0) {
                     holder.dividerTop.visibility = View.GONE
@@ -67,7 +67,8 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
 
                 if(position >= 1 && comparePost(thisPost, dataset[position-1])) {
                     Log.d("onBindViewHolder", "GONE")
-                    holder.timestampTextView.visibility = View.GONE
+                    holder.timestampDate.visibility = View.GONE
+                    holder.timestampMonthYear.visibility = View.GONE
                     holder.dividerTop.visibility = View.GONE
                 }
 
@@ -82,7 +83,7 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                 (holder as GridViewHolder).imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
                 holder.locationTextView.text = thisPost.location.city
                 holder.itemView.setOnClickListener {clickListener(thisPost)}
-                setScaledImage(holder.imageView, thisPost.image)
+                holder.imageView.setImageBitmap(squareCropImg(scaleImage(thisPost.image)))
             }
         }
     }
@@ -108,9 +109,9 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
         return Bitmap.createBitmap(original, cropW, cropH, newWidth, newHeight)
     }
 
-    private fun setScaledImage(imageView: ImageView, imagePath: String) {
+    private fun scaleImage(imagePath: String): Bitmap {
         // Get the dimensions of the View
-        val targetW = 640
+        val targetW = 720
 
         val bmOptions = BitmapFactory.Options().apply {
             // Get the dimensions of the bitmap
@@ -129,8 +130,16 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
             inJustDecodeBounds = false
             inSampleSize = scaleFactor
         }
-        BitmapFactory.decodeFile(imagePath, bmOptions)?.also { bitmap ->
-            imageView.setImageBitmap(squareCropImg(bitmap))
-        }
+        return BitmapFactory.decodeFile(imagePath, bmOptions)
+    }
+
+    private fun setTimestamp(textViewMonthYear: TextView, textViewdate: TextView, timestamp: String) {
+        val dateMonthYear = timestamp.substringBefore(" - ")
+        Log.d("abc", dateMonthYear)
+        val monthYear = dateMonthYear.substringAfter(" ")
+        Log.d("abc", monthYear)
+
+        textViewdate.text = appContext.getString(R.string.date, dateMonthYear.substringBefore(" "))
+        textViewMonthYear.text = appContext.getString(R.string.month_and_year, monthYear.substringBefore(" "), monthYear.substringAfter(" "))
     }
 }

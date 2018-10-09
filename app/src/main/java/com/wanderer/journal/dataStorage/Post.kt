@@ -14,8 +14,9 @@ data class Post(
     val weather: String,
     @Embedded
     val location: Location): Comparable<Post> {
+
     override fun compareTo(other: Post): Int {
-        val spd = SimpleDateFormat("dd/MM/yyy HH:mm:ss")
+        val spd = SimpleDateFormat("dd MMM yyyy - HH:mm:ss")
         val thisTime = spd.parse(this.time)
         val otherTime = spd.parse(other.time)
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTintMode="screen">
@@ -31,12 +30,15 @@
         android:background="@color/translucent_textView"
         android:backgroundTintMode="add"
         android:elevation="4dp"
-        android:fontFamily="sans-serif-condensed"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/quicksand"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:singleLine="true"
         android:textAlignment="center"
         android:textColor="@color/textView_text"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_grid"
         app:layout_constraintEnd_toEndOf="@+id/imageView_grid"
         app:layout_constraintStart_toStartOf="@+id/imageView_grid" />

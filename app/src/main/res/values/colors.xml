@@ -12,11 +12,9 @@
     <color name="pastelLight_PrimaryDark">#3c6999</color>
     <color name="pastelLight_Accent">#f48b52</color>
     <color name="pastelLight_Background">#f1f1f1</color>
-    <color name="pastelLight_Text">#343435</color>
 
     <color name="pastelDark_Primary">#192231</color>
     <color name="pastelDark_PrimaryDark">#161d29</color>
     <color name="pastelDark_Accent">#985e6d</color>
     <color name="pastelDark_Background">#1d2731</color>
-    <color name="pastelDark_Text">#343435</color>
 </resources>

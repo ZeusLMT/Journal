@@ -46,8 +46,8 @@ class TimelineFragment: Fragment() {
                 textView_empty.visibility = View.VISIBLE
             } else {
                 textView_empty.visibility = View.GONE
-                adapter.setData(it!!.sorted())
             }
+            adapter.setData(it.sorted())
         })
     }
 
