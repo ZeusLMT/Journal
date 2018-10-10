@@ -74,8 +74,6 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                     holder.timestampMonthYear.visibility = View.GONE
                     holder.dividerDate.visibility = View.GONE
                     holder.dividerTop.visibility = View.GONE
-                } else if (position == dataset.lastIndex) {
-                    holder.dividerBottom.visibility = View.GONE
                 } else {
                     holder.dividerTop.visibility = View.VISIBLE
                     holder.timestampDate.visibility = View.VISIBLE
@@ -83,7 +81,10 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                     holder.dividerDate.visibility = View.VISIBLE
                     holder.dividerTop.visibility = View.VISIBLE
                     holder.dividerBottom.visibility = View.VISIBLE
+                }
 
+                if (position == dataset.lastIndex) {
+                    holder.dividerBottom.visibility = View.GONE
                 }
 
                 holder.imageView.setOnClickListener {clickListener(thisPost)}

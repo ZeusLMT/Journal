@@ -76,7 +76,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textColorHint="?android:attr/textColorHintInverse"
+        android:textColorHint="?android:attr/textColorHint"
         app:counterMaxLength="4"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
@@ -91,7 +91,8 @@
             android:imeOptions="actionDone"
             android:inputType="numberPassword"
             android:maxLength="4"
-            android:textColor="?android:attr/textColorPrimaryInverse" />
+            android:textColor="?android:attr/textColorPrimary"
+            android:textColorHint="?android:attr/textColorHint" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.constraint.Guideline

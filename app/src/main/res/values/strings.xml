@@ -125,7 +125,7 @@
 
     <!--Messages and errors-->
     <string name="toast_empty_desc">Description empty. Please fill!</string>
-    <string name="snackbar_deleted_entry">Journal entry deleted</string>
+    <string name="toast_deleted_entry">Journal entry deleted</string>
     <string name="toast_share">Share is under development at the moment</string>
     <string name="toast_error_gallery">Error opening app</string>
     <string name="username_error">Please enter your username</string>

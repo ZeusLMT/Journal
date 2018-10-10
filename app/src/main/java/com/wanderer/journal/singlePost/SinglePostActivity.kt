@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.support.design.widget.Snackbar
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -30,7 +29,6 @@ import com.wanderer.journal.dataStorage.PostModel
 import com.wanderer.journal.editPost.EditPostActivity
 import kotlinx.android.synthetic.main.activity_single_post.*
 import kotlinx.android.synthetic.main.content_single_post.*
-import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
 import java.io.File
 
@@ -106,12 +104,9 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
         doAsync {
             File(myPost.image).delete()
             postDB.postDao().deletePost(myPost)
-            finish()
-            UI {
-                Snackbar.make(view, getString(R.string.snackbar_deleted_entry), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show()
-            }
         }
+        Toast.makeText(this, R.string.toast_deleted_entry, Toast.LENGTH_LONG).show()
+        finish()
     }
 
     override fun onDeleteNegativeClick(dialog: DialogFragment) {

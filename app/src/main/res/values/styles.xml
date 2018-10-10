@@ -19,7 +19,7 @@
     <style name="AppTheme.PastelLight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@color/pastelLight_PrimaryDark</item>
+        <item name="android:statusBarColor">#59000000</item>
     </style>
 
     <style name="AppTheme.PastelLight.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -92,7 +92,7 @@
 
     <!--Messages and errors-->
     <string name="toast_empty_desc">Nội dung trống. Cần được viết trước khi lưu</string>
-    <string name="snackbar_deleted_entry">Trang đã được xóa</string>
+    <string name="toast_deleted_entry">Trang đã được xóa</string>
     <string name="toast_share">"Chia sẻ" đang trong quá trình hoàn thiện</string>
     <string name="toast_error_gallery">Lỗi mở thư viện ảnh</string>
     <string name="username_error">Nhập tên người dùng</string>

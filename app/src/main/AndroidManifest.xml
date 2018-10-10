@@ -42,7 +42,7 @@
 
         <activity
             android:name=".splashScreen.SplashActivity"
-            android:theme="@style/AppTheme.PastelLight.NoActionBar">
+            android:theme="@style/AppTheme.PastelDark.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
