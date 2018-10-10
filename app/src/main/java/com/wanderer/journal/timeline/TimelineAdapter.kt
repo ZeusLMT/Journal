@@ -146,9 +146,11 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
 
     private fun setTimestamp(textViewMonthYear: TextView, textViewdate: TextView, timestamp: String) {
         val dateMonthYear = timestamp.substringBefore(" - ")
-        val dayMonth = dateMonthYear.substringBeforeLast("/")
+        Log.d("abc", dateMonthYear)
+        val monthYear = dateMonthYear.substringAfter("/")
+        Log.d("abc", monthYear)
 
-        textViewdate.text = appContext.getString(R.string.date_and_month, dayMonth)
-        textViewMonthYear.text = appContext.getString(R.string.year, dateMonthYear.substringAfterLast("/"))
+        textViewdate.text = appContext.getString(R.string.date, dateMonthYear.substringBefore("/"))
+        textViewMonthYear.text = appContext.getString(R.string.month_and_year, monthYear)
     }
 }

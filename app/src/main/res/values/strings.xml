@@ -28,8 +28,8 @@
     <string name="description_hint">Save your thoughts here…</string>
 
     <!--Single Post Activity-->
-    <string name="date_and_month" translatable="false">%1$s</string>
-    <string name="year" translatable="false">%1$s</string>
+    <string name="date" translatable="false">%1$s</string>
+    <string name="month_and_year" translatable="false">%1$s</string>
     <string name="location">location</string>
     <string name="description">description</string>
     <string name="weather">Sunny</string>
