@@ -13,10 +13,13 @@ import com.wanderer.journal.singlePost.SinglePostActivity
 import com.wanderer.journal.timeline.TimelineFragment
 import com.wanderer.journal.timeline.TimelineMapFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.doAsync
+
 
 class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener, TimelineMapFragment.TimelineMapFragListener {
     companion object {
         const val REQUEST_SETTINGS = 1
+        const val DEGREE = "\u00b0"
     }
     private val timelineFragment = TimelineFragment()
     private val timelineMapFragment = TimelineMapFragment()
@@ -57,11 +60,29 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
         return true
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val item = menu!!.findItem(R.id.action_demo)
+        item.isEnabled = !sp.getBoolean(getString(R.string.prefs_key_demo), false)
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?) = when (item!!.itemId) {
         R.id.action_settings -> {
             val intent = Intent(this, SettingsActivity::class.java).apply{}
             startActivityForResult(intent, REQUEST_SETTINGS)
             true
+        }
+
+        R.id.action_demo -> {
+            with(sp.edit()) {
+                putBoolean(getString(R.string.prefs_key_demo), true)
+                apply()
+            }
+            doAsync {
+                val demoDataUtils = DemoDataUtils(applicationContext)
+                demoDataUtils.setupDemoData()
+            }
+            false
         }
 
         else -> super.onOptionsItemSelected(item)

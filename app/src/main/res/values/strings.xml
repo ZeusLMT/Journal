@@ -15,6 +15,7 @@
     <!--Main Activity-->
     <string name="main_title">Timeline</string>
     <string name="action_settings">Settings</string>
+    <string name="action_demo">Setup demo data</string>
     <string name="general_img_desc">Image taken at %1$s</string>
     <string name="empty_display_text">Your Journal is empty. Start by adding a new entry using the button below</string>
 
@@ -27,8 +28,8 @@
     <string name="description_hint">Save your thoughts here…</string>
 
     <!--Single Post Activity-->
-    <string name="date" translatable="false">%1$s</string>
-    <string name="month_and_year" translatable="false">%1$s\n%2$s</string>
+    <string name="date_and_month" translatable="false">%1$s</string>
+    <string name="year" translatable="false">%1$s</string>
     <string name="location">location</string>
     <string name="description">description</string>
     <string name="weather">Sunny</string>
@@ -103,6 +104,8 @@
 
     <string name="prefs_key_passcode" translatable="false">prefs_Passcode</string>
     <string name="prefs_title_passcode">Change passcode</string>
+
+    <string name="prefs_key_demo" translatable="false">prefs_Demo</string>
 
     <!--Errors-->
     <string name="location_error">Location error</string>

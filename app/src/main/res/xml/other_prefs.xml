@@ -3,4 +3,7 @@
     <CheckBoxPreference
         android:key="@string/prefs_key_first_visit"
         android:defaultValue="true" />
+    <CheckBoxPreference
+        android:key="@string/prefs_key_demo"
+        android:defaultValue="false" />
 </PreferenceScreen>

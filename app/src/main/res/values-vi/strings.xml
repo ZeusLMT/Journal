@@ -16,6 +16,7 @@
     <!--Main Activity-->
     <string name="main_title">Dòng thời gian</string>
     <string name="action_settings">Cài đặt</string>
+    <string name="action_demo">Giả lập dữ liệu</string>
     <string name="general_img_desc">Ảnh được chụp tại %1$s</string>
     <string name="empty_display_text">Journal của bạn hiện đang trống. Bắt đầu thêm bằng nút dưới đây</string>
 

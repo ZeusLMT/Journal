@@ -26,6 +26,7 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                           val timestampMonthYear: TextView = itemView.findViewById(R.id.timestamp_month_year),
                           val imageView: ImageView = itemView.findViewById(R.id.imageView_list),
                           val dividerTop: View = itemView.findViewById(R.id.divider_top),
+                          val dividerDate: View = itemView.findViewById(R.id.divider_date),
                           val dividerBottom: View = itemView.findViewById(R.id.divider_bottom)) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -57,23 +58,27 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
         when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
             "LIST" -> {
                 (holder as ListViewHolder).imageView.contentDescription = appContext.getString(R.string.general_img_desc, thisPost.location.city)
-                //holder.timestampDate.text = thisPost.time.substringBefore(" ")
                 setTimestamp(holder.timestampMonthYear, holder.timestampDate, thisPost.time)
                 holder.imageView.setImageBitmap(scaleImage(thisPost.image))
 
                 if (position == 0) {
                     holder.dividerTop.visibility = View.GONE
-                }
-
-                if(position >= 1 && comparePost(thisPost, dataset[position-1])) {
-                    Log.d("onBindViewHolder", "GONE")
+                } else if (comparePost(thisPost, dataset[position - 1]) && position >= 1) {
+                    Log.d("abc", "this")
                     holder.timestampDate.visibility = View.GONE
                     holder.timestampMonthYear.visibility = View.GONE
+                    holder.dividerDate.visibility = View.GONE
                     holder.dividerTop.visibility = View.GONE
-                }
-
-                if (position == dataset.lastIndex) {
+                } else if (position == dataset.lastIndex) {
                     holder.dividerBottom.visibility = View.GONE
+                } else {
+                    holder.dividerTop.visibility = View.VISIBLE
+                    holder.timestampDate.visibility = View.VISIBLE
+                    holder.timestampMonthYear.visibility = View.VISIBLE
+                    holder.dividerDate.visibility = View.VISIBLE
+                    holder.dividerTop.visibility = View.VISIBLE
+                    holder.dividerBottom.visibility = View.VISIBLE
+
                 }
 
                 holder.imageView.setOnClickListener {clickListener(thisPost)}
@@ -94,7 +99,9 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
     }
 
     private fun comparePost(thisPost: Post, otherPost: Post): Boolean {
-        return thisPost.time.substringBefore(" ") == otherPost.time.substringBefore(" ")
+        Log.d("abc", thisPost.time.substringBefore(" - "))
+        Log.d("abc", otherPost.time.substringBefore(" - "))
+        return thisPost.time.substringBefore(" - ") == otherPost.time.substringBefore(" - ")
     }
 
     private fun squareCropImg(original: Bitmap): Bitmap {
@@ -121,7 +128,6 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
             val photoH: Int = outHeight
             val ratio = photoW.toFloat() / photoH.toFloat()
             val targetH = (targetW / ratio).toInt()
-            Log.d("scaledImageInfo", "$photoW, $photoH, $ratio, $targetW, $targetH")
 
             // Determine how much to scale down the image
             val scaleFactor: Int = Math.min(photoW / targetW, photoH / targetH)
@@ -135,11 +141,9 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
 
     private fun setTimestamp(textViewMonthYear: TextView, textViewdate: TextView, timestamp: String) {
         val dateMonthYear = timestamp.substringBefore(" - ")
-        Log.d("abc", dateMonthYear)
-        val monthYear = dateMonthYear.substringAfter(" ")
-        Log.d("abc", monthYear)
+        val dayMonth = dateMonthYear.substringBeforeLast("/")
 
-        textViewdate.text = appContext.getString(R.string.date, dateMonthYear.substringBefore(" "))
-        textViewMonthYear.text = appContext.getString(R.string.month_and_year, monthYear.substringBefore(" "), monthYear.substringAfter(" "))
+        textViewdate.text = appContext.getString(R.string.date_and_month, dayMonth)
+        textViewMonthYear.text = appContext.getString(R.string.year, dateMonthYear.substringAfterLast("/"))
     }
 }
