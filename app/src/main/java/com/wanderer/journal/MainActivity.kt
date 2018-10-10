@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        //Disable setup demo menu after one run
         val item = menu!!.findItem(R.id.action_demo)
         item.isEnabled = !sp.getBoolean(getString(R.string.prefs_key_demo), false)
         return super.onPrepareOptionsMenu(menu)
@@ -89,6 +90,7 @@ class MainActivity : AppCompatActivity(), TimelineFragment.TimelineFragListener,
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        //recreate activity when back from settings to apply new settings
         when (requestCode) {
             REQUEST_SETTINGS -> {
                 recreate()

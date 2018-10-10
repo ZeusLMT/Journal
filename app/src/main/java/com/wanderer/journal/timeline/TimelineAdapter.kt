@@ -17,10 +17,12 @@ import com.wanderer.journal.dataStorage.Post
 class TimelineAdapter (private val appContext: Context, val clickListener: (Post) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var dataset: List<Post> = emptyList()
 
+    //Viewholder for grid layout
     class GridViewHolder (private val itemView: View,
-                         val locationTextView: TextView = itemView.findViewById(R.id.location),
-                         val imageView: ImageView = itemView.findViewById(R.id.imageView_grid)) : RecyclerView.ViewHolder(itemView)
+                          val locationTextView: TextView = itemView.findViewById(R.id.location),
+                          val imageView: ImageView = itemView.findViewById(R.id.imageView_grid)) : RecyclerView.ViewHolder(itemView)
 
+    //Viewholder for list layout
     class ListViewHolder (private val itemView: View,
                           val timestampDate: TextView = itemView.findViewById(R.id.timestamp_date),
                           val timestampMonthYear: TextView = itemView.findViewById(R.id.timestamp_month_year),
@@ -32,6 +34,8 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val sp = PreferenceManager.getDefaultSharedPreferences(appContext)
         var viewHolder: RecyclerView.ViewHolder? = null
+
+        //Choose between 2 viewholder based on SharedPrefs
         when (sp.getString(appContext.getString(R.string.prefs_key_view_mode), "GRID")) {
             "LIST" -> {
                 val itemView = LayoutInflater.from(parent.context)
@@ -61,6 +65,7 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
                 setTimestamp(holder.timestampMonthYear, holder.timestampDate, thisPost.time)
                 holder.imageView.setImageBitmap(scaleImage(thisPost.image))
 
+                //Display item's component suitable to its relationship with the previous one
                 if (position == 0) {
                     holder.dividerTop.visibility = View.GONE
                 } else if (comparePost(thisPost, dataset[position - 1]) && position >= 1) {
@@ -117,7 +122,7 @@ class TimelineAdapter (private val appContext: Context, val clickListener: (Post
     }
 
     private fun scaleImage(imagePath: String): Bitmap {
-        // Get the dimensions of the View
+        // Get the target dimension
         val targetW = 720
 
         val bmOptions = BitmapFactory.Options().apply {

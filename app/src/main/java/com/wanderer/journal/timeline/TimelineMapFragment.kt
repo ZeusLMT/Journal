@@ -67,8 +67,13 @@ class TimelineMapFragment : Fragment(), OnMapReadyCallback {
     private fun updateMap(posts: List<Post>?) {
         if (posts != null) {
             Log.d("updateMap", "update map")
+
+            //Clear previously added markers if exist
             timelineMap.clear()
+
+            //Use LatLngBound object to set the suitable zoom
             val builder = LatLngBounds.Builder()
+
             for (post in posts) {
                 val location = LatLng(post.location.latitude.toDouble(), post.location.longitude.toDouble())
                 val newMarker = timelineMap.addMarker(MarkerOptions()
@@ -92,6 +97,7 @@ class TimelineMapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
+    //Converter to match with different screen density
     private fun dpToPx(dp: Int): Int {
         return (dp * Resources.getSystem().displayMetrics.density).toInt()
     }

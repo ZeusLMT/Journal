@@ -17,7 +17,7 @@ object WeatherApi {
     }
 
     interface LocationService{
-        @GET("data/2.5/weather?appid=$KEY&units=metric")
+        @GET("data/2.5/weather?appid=${KEY}&units=metric")
         fun getWeatherInfo(@Query("q")q: String): Call<Model.WeatherResult>
     }
 
