@@ -55,6 +55,10 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
             onEdit()
         }
 
+        header_img.setOnClickListener {
+            showBottomSheet()
+        }
+
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -176,7 +180,7 @@ class SinglePostActivity : AppCompatActivity(), DeleteDialogFragment.DeleteDialo
 
         val location = LatLng(myPost.location.latitude.toDouble(), myPost.location.longitude.toDouble())
         mMap.addMarker(MarkerOptions().position(location)
-                .title("Image location")
+                .title("${myPost.location.neighbourhood}, ${myPost.location.city}")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.place_marker)))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
     }
