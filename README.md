@@ -45,7 +45,7 @@ A dynamic on-the-go journal with the purpose of saving your thoughts and your mo
 ### Install
  - Clone from github
  - Open with Android Studio (prefereably >= 3.0)
- - **Important:** *Acquire your own key from Google Maps and Open Weather Map first then modify 'google_maps_api.xml' and 'open_weather_api.xml'*
+ - **Important:** *Acquire your own key from Google Maps and Open Weather Map first then modify 'google_maps_api.xml' and 'WeatherApi.kt with your own'*
  - Run app in emulator or actual Android device
 ### Code snippets:
 **"Post" entity for Room SQL**
