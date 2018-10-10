@@ -83,7 +83,7 @@ class DemoDataUtils(private val appContext: Context) {
         postDB.postDao().insert(phuQuocPost)
 
         val santoriniLocation = Location(0, "15/06/2018 - 14:47:12", "36.461389", "25.376111", "Oia", "Oia Municipal Unit", "Greece")
-        val santoriniPost = Post("15/06/2018 - 15:47:12", "$generalPath/santorini.jpg", "The infamous spot that appears on every leaflet Santorini", "26${MainActivity.DEGREE}C - Clear sky", santoriniLocation)
+        val santoriniPost = Post("15/06/2018 - 15:47:12", "$generalPath/santorini.jpg", "The infamous spot that appears on every leaflet of Santorini", "26${MainActivity.DEGREE}C - Clear sky", santoriniLocation)
         postDB.postDao().insert(santoriniPost)
 
         val suomenlinnaLocation = Location(0, "15/06/2017 - 16:10:42", "60.143056", "24.980833", "Suomenlinna", "Helsinki", "Finland")

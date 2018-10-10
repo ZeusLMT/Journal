@@ -219,6 +219,7 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/quicksand"
                 android:text="@string/large_text"
+                android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
