@@ -10,11 +10,11 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import com.wanderer.journal.MainActivity
+import com.wanderer.journal.R
 import com.wanderer.journal.dataStorage.Location
 import com.wanderer.journal.dataStorage.Post
 import com.wanderer.journal.dataStorage.PostDB
-import com.wanderer.journal.MainActivity
-import com.wanderer.journal.R
 import kotlinx.android.synthetic.main.activity_edit_post.*
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.doAsync
@@ -83,9 +83,9 @@ class EditPostActivity : AppCompatActivity(), View.OnClickListener {
                 weather = curPost.weather
                 Log.d("OnGetPost", imgPath)
 
-                edit_description.setText(desc, TextView.BufferType.EDITABLE)
                 val imgBitmap = squareCropImg(BitmapFactory.decodeFile(imgPath))
                 edit_post_img.setImageBitmap(imgBitmap)
+                edit_description.setText(desc, TextView.BufferType.EDITABLE)
             }
         }
     }
